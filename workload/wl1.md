@@ -1,4 +1,4 @@
-### Workload für die Woche vom 5. bis 12. März 2019
+### Workload für die Woche vom 5. bis 12. März 2020
 
 ## HTML Online Tutorials der *codeacademy*
 
@@ -28,4 +28,4 @@ https://www.codecademy.com/courses/learn-html/lessons/intro-to-html/exercises/re
 * mit `STRG+Umschalt+P / Beautify file` formatieren
 * *stagen* und mit einer commit-Message *committen* (z.B. dem Titel der Lektion `What is HTML?`)
 
-Bis spätestens **Donnerstag, 12. März 2019 mittags** soll die Workload im Github Repository `codeacademy` erreichbar sein
+Bis spätestens **Donnerstag, 12. März 2020 mittags** soll die Workload im Github Repository `codeacademy` erreichbar sein
