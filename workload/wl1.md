@@ -1,6 +1,6 @@
 ### Workload für die Woche vom 5. bis 12. März 2020
 
-## HTML Online Tutorials der *codeacademy*
+## HTML Online Tutorials der *Codecademy*
 
 * [https://www.codecademy.com/](https://www.codecademy.com/)
 * HTML-Tutorial ausführen: [https://www.codecademy.com/learn/learn-html](https://www.codecademy.com/learn/learn-html)
@@ -19,13 +19,13 @@ https://www.codecademy.com/courses/learn-html/lessons/intro-to-html/exercises/re
 
 ### Parallel dazu GIT verwenden
 
-* ein github Repository `codeacademy` anlegen und darin zwei Unterverzeichniss für die Tutorials
+* ein github Repository `codecademy` anlegen und darin zwei Unterverzeichniss für die Tutorials
     ```
-    github.com/username/codeacademy/01_introduction/
-    github.com/username/codeacademy/02_standards/
+    github.com/username/codecademy/01_introduction/
+    github.com/username/codecademy/02_standards/
     ```
 * vor jedem Wechsel zur nächsten Aufgabe (gelber `Next` Button), den erzeugten Quellcode der erfolgreichen Aufgabe in einer HTML-Datei mit der Nummer der Aufgabe speichern (z.B. `1.html`)
 * mit `STRG+Umschalt+P / Beautify file` formatieren
 * *stagen* und mit einer commit-Message *committen* (z.B. dem Titel der Lektion `What is HTML?`)
 
-Bis spätestens **Donnerstag, 12. März 2020 mittags** soll die Workload im Github Repository `codeacademy` erreichbar sein
+Bis spätestens **Donnerstag, 12. März 2020 mittags** soll die Workload im Github Repository `codecademy` erreichbar sein
