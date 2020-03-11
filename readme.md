@@ -1,5 +1,5 @@
 # Geoinformatik: Web mapping (20S)
-## Klaus Förster, Bernd Öggl, Johannes Branke(Tutor)
+## Klaus Förster, Bernd Öggl, Johannes Branke (Tutor)
 
 ### zur Lehrveranstaltung
 * VU3 mit immanentem Prüfungscharakter / 5 ECTS-AP (entspricht 5*25 Arbeitsstunden)
