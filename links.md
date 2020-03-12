@@ -18,4 +18,5 @@
 
 - [GIMP - GNU Image Manipulation Program](https://www.gimp.org/)
 - [GIT-Client git-scm](https://git-scm.com/)
+- [LibreOffice - Free Office Suite](https://www.libreoffice.org/)
 - [Visual Studio Code Editor](https://code.visualstudio.com/)
