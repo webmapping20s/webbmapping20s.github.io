@@ -3,7 +3,7 @@
 ## Lernen
 
 - [GIT in VS Code verwenden](https://code.visualstudio.com/docs/editor/versioncontrol)
-- [Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn)
+- [Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn)
 - [Online Tutorials der Codecademy](https://www.codecademy.com/)
 - [SELFHTML-Wiki](https://wiki.selfhtml.org/wiki/)
 
