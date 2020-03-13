@@ -7,12 +7,12 @@
 
 1. Selectors and Visual Rules - CSS Setup and Selectors
 *In this lesson, you’ll learn how to select which HTML elements you wish to style and set up your CSS file structure.*
-https://www.codecademy.com/courses/learn-css/lessons/css-setup-selectors/exercises/intro-to-css
+[https://www.codecademy.com/courses/learn-css/lessons/css-setup-selectors/exercises/intro-to-css](https://www.codecademy.com/courses/learn-css/lessons/css-setup-selectors/exercises/intro-to-css)
 
 
 2. Selectors and Visual Rules - CSS Visual Rules
 *In this lesson, you will learn the fundamentals of CSS visual rules, which will enable you to add style to HTML elements.*
-https://www.codecademy.com/courses/learn-css/lessons/css-visual-rules/exercises/css-structure
+[https://www.codecademy.com/courses/learn-css/lessons/css-visual-rules/exercises/css-structure](https://www.codecademy.com/courses/learn-css/lessons/css-visual-rules/exercises/css-structure)
 
 
 ### parallel dazu GIT verwenden
