@@ -22,3 +22,7 @@ header p {
 .white a:visited {
     color: white;
 }
+
+header nav img {
+    border-radius: 50%;
+}
