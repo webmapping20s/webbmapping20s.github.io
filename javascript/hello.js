@@ -84,3 +84,8 @@ for (let j = 0; j < participants.length; j++) {
     const participant = participants[j];
     console.log(`Teilnehmer*in ${j} ${participant}`);
 }
+
+participants.forEach(participant => {
+    console.log(`Teilnehmer*in ${participant}`);
+});
+
