@@ -24,3 +24,5 @@
 - [GIT-Client git-scm](https://git-scm.com/)
 - [LibreOffice - Free Office Suite](https://www.libreoffice.org/)
 - [Visual Studio Code Editor](https://code.visualstudio.com/)
+  - [Live Server Plugin](https://github.com/ritwickdey/vscode-live-server.git)
+  - [Beautify Plugin](https://github.com/HookyQR/VSCodeBeautify)
