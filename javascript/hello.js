@@ -8,8 +8,12 @@
 const LINK_COLOR = "#ff0000";
 console.log("Link bitte in der Farbe ", LINK_COLOR);
 
+// numerische Variable
+
 let highscore = 520233;
 console.log(highscore / 10);
+
+// Zeichenketten/Strings
 
 let firstname = "John";
 let lastname = 'Smith';
@@ -27,6 +31,8 @@ console.log(isOver18);
 let age = 19;
 console.log("über 18?", age > 18);
 
+// Arrays/Listen
+
 let participants = [ "John", "Jane", "Max" ];
 console.log(participants);
 console.log("Einträge im Array: ", participants.length);
@@ -34,6 +40,8 @@ console.log(participants[2]);
 
 let gameHighscores = [2099, 3010, 3333, 5000 ];
 console.log(gameHighscores);
+
+// Objekte
 
 let user = {
     firstname: "John",
@@ -54,6 +62,8 @@ console.log(b/(a-1));
 a++;
 console.log(a);
 
+// if-Abfrage
+
 // let myAge = prompt("Wie alt bist du?");
 // console.log(`Du bist ${myAge} Jahre alt.`);
 // console.log(`über 18? ${myAge > 18}`);
@@ -63,3 +73,4 @@ console.log(a);
 // } else {
 //     console.log("Leider unter 18");
 // }
+
