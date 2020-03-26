@@ -128,3 +128,13 @@ let firstParagraph = document.querySelector("#pFirst");
 console.log(firstParagraph);
 // firstParagraph.remove();
 firstParagraph.innerHTML = "Test";
+firstParagraph.style.color = "red";
+
+let indetedParas = document.querySelectorAll(".indent");
+console.log(indetedParas);
+indetedParas.innerHTML = "Test2";
+indetedParas.forEach((para, index) => {
+    para.innerHTML = `Absatz ${index}`;
+    // para.style.color = "yellow";
+
+});
