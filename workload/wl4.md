@@ -2,7 +2,7 @@
 
 ## Eine Karte für deine Etappe der Neuseelandreise
 
-Im der `main.js` Javascript-Datei eurer Etappe der Neuseelandreise ist noch viel Platz und deshalb sollt ihr dort bis zur nächsten Session eine Übersichtskarte mit Leaflet implementieren. Die Koordinaten zur Positionierung des Kartenmittelpunkts stehen im DIV mit der ID `map` als `data-lat` und `dat-lng` Attribute bereit und aus dem `data-title` Attribut lässt sich ein schönes Popup basteln, das nach dem Laden der Seite angezeigt werden kann.
+Im der `main.js` Javascript-Datei eurer Etappe der Neuseelandreise ist noch viel Platz und deshalb sollt ihr dort bis zur nächsten Session eine Übersichtskarte mit Leaflet implementieren. Die Koordinaten zur Positionierung des Kartenmittelpunkts stehen im DIV mit der ID `map` als `data-lat` und `dat-lng` Attribute bereit und aus dem `data-title` Attribut lässt sich ein schöner Marker beim Kartenmittelpunkt mit einem Popup basteln, das nach dem Laden der Seite angezeigt werden kann.
 
 Wie ihr in Leaflet eine einfache Karte implementieren könnt findet ihr auf der [Leaflet Tutorials Seite](https://leafletjs.com/examples.html) im [Leaflet Quick Start Guide](https://leafletjs.com/examples/quick-start/) Beispiel.
 
