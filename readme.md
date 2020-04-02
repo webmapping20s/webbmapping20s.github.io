@@ -11,14 +11,13 @@
 * 19.03.  CSS (Cascading Stylesheets)
 * 26.03.  Javascript & DOM (Document Object Model)
 * 02.04.  Leaflet Basics & WMTS (Web Map Tile Services)
-* *Osterferien*
-* 23.04.  Leaflet Marker & GeoJSON-Format
-* 30.04.  Leaflet Plugins I (*hash*, *fullscreen*, *markercluster*)
-* 07.05.  Leaflet Plugins II (*omnivore*,*elevation*, *gpx*)
-* 14.05.  Leaflet Interaktion im Browser I
-* 28.05.  Leaflet Interaktion im Browser II
+* 09.04.  Leaflet Marker & GeoJSON-Format
+* 16.04.  Leaflet Plugins I (*hash*, *fullscreen*, *markercluster*)
+* 23.04.  Leaflet Plugins II (*omnivore*,*elevation*, *gpx*)
+* 30.04.  Leaflet Interaktion im Browser I
+* 07.05.  Leaflet Interaktion im Browser II
 * *Projektphase*
-* 18.06.  Präsentationen
+* 04.06.  Präsentationen
 
 ### Anforderungen
 * 1/3 **Anwesenheit & aktive Mitarbeit**: maximal 2 x fehlen
