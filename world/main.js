@@ -21,5 +21,5 @@ L.control.layers({
     "Esri.WorldImagery": L.tileLayer.provider("Esri.WorldImagery"),
     "Esri.WorldPhysical": L.tileLayer.provider("Esri.WorldPhysical"),
     "Esri.WorldGrayCanvas": L.tileLayer.provider("Esri.WorldGrayCanvas"),
-    "CartoDB.Positron": L.tileLayer.provider("CartoDB.Positron"),
-}).addTo(map)
+    "CartoDB.Positron": L.tileLayer.provider("CartoDB.Positron")
+}).addTo(map);
