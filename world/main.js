@@ -9,6 +9,8 @@ let map = L.map("map", {
     ]
 });
 
+let circleGroup = L.featureGroup().addTo(map);
+
 L.control.layers({
     "OpenTopoMap" : L.tileLayer.provider("OpenTopoMap"),
     "OpenStreetMap.Mapnik" : L.tileLayer.provider("OpenStreetMap.Mapnik"),
@@ -22,7 +24,13 @@ L.control.layers({
     "Esri.WorldPhysical": L.tileLayer.provider("Esri.WorldPhysical"),
     "Esri.WorldGrayCanvas": L.tileLayer.provider("Esri.WorldGrayCanvas"),
     "CartoDB.Positron": L.tileLayer.provider("CartoDB.Positron")
+},{
+    "Thematische Darstellung" : circleGroup
 }).addTo(map);
+
+let drawCircles = function(data) {
+
+};
 
 //console.log(CONFIRMED);
 for (let i = 1; i < CONFIRMED.length; i++) {
@@ -42,6 +50,6 @@ for (let i = 1; i < CONFIRMED.length; i++) {
     let r = Math.sqrt(val*s/Math.PI);
     let circle = L.circleMarker([lat,lng],{
         radius: r
-    }).addTo(map);
+    }).addTo(circleGroup);
     circle.bindPopup(`${reg}: ${val}`);
 }
