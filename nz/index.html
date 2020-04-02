@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neuseelandreise - Tongariro-Nationalpark</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Open+Sans&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.9.1/leaflet-providers.js"></script>
-    
+
     <link rel="stylesheet" href="main.css">
     <script defer src="main.js"></script>
 </head>
+
 <body>
     <header>
         <img class="banner" src="images/header.jpg" alt="Blick auf den Tongariro Vulkan"><!-- 1280x365 Pixel 72 dpi -->
         <!-- pixabay.com -->
         <!-- wikimedia -->
-        <p class="white"><a href="https://pixabay.com/de/photos/tongariro-vulkan-herr-der-ringe-583179/">&copy;Bild holgerheinz0</a></p>
+        <p class="white"><a href="https://pixabay.com/de/photos/tongariro-vulkan-herr-der-ringe-583179/">&copy;Bild
+                holgerheinz0</a></p>
         <h1>Neuseelandreise - Tongariro-Nationalpark</h1>
         <nav>
             <a href="https://pixabay.com/de/photos/maori-krieger-waffe-zunge-583175/">
@@ -38,37 +41,55 @@
 
     <main>
         <h1>Tongariro-Nationalpark - Kultstätten der Maori</h1>
-        <p>Der Tongariro-Nationalpark (englisch Tongariro National Park) ist der älteste Nationalpark Neuseelands. Der sich im Zentrum der Nordinsel erstreckende Park gehört als eine von nur 35 Stätten sowohl zum Weltkultur- als auch zum Weltnaturerbe der UNESCO. Der Tongariro-Nationalpark ist der viertälteste Nationalpark weltweit. Im Zentrum des Parks befinden sich drei aktive Vulkanberge: der Tongariro (1968 m), der Ngauruhoe (2291 m) und der Ruapehu (2797 m). Auf dem Gebiet des Nationalparks befinden sich mehrere Kultstätten der Māori, die die Vulkane als heilig verehren. 
-        (Quelle: <a href="https://de.wikipedia.org/wiki/Tongariro-Nationalpark">Wikipedia</a>)
+        <p>Der Tongariro-Nationalpark (englisch Tongariro National Park) ist der älteste Nationalpark Neuseelands. Der
+            sich im Zentrum der Nordinsel erstreckende Park gehört als eine von nur 35 Stätten sowohl zum Weltkultur-
+            als auch zum Weltnaturerbe der UNESCO. Der Tongariro-Nationalpark ist der viertälteste Nationalpark
+            weltweit. Im Zentrum des Parks befinden sich drei aktive Vulkanberge: der Tongariro (1968 m), der Ngauruhoe
+            (2291 m) und der Ruapehu (2797 m). Auf dem Gebiet des Nationalparks befinden sich mehrere Kultstätten der
+            Māori, die die Vulkane als heilig verehren.
+            (Quelle: <a href="https://de.wikipedia.org/wiki/Tongariro-Nationalpark">Wikipedia</a>)
         </p>
 
         <h2>Emerald Lakes</h2>
         <figure>
             <img src="images/attraction.jpg" alt="*"><!-- 900x600 Pixel 72dpi pixabay oder wikimedia -->
-            <figcaption><i class="fas fa-camera-retro"></i> Blick auf die Emerald Seen. <a href="https://pixabay.com/de/photos/emerald-lakes-3189389/">&copy;Bild Laura7933</a></figcaption>
+            <figcaption><i class="fas fa-camera-retro"></i> Blick auf die Emerald Seen. <a
+                    href="https://pixabay.com/de/photos/emerald-lakes-3189389/">&copy;Bild Laura7933</a></figcaption>
         </figure>
-        <p>Die Emerald Lakes (englisch für ‚Smaragdseen‘, Māori Ngarotopoum namu) sind drei kleine Kraterseen am Mount Tongariro im zum Weltnaturerbe der UNESCO gehörenden Tongariro-Nationalpark in der Region Manawatu-Wanganui in Neuseeland. Ihren Namen verdanken die südlich des Zentralkraters gelegenen Seen der leuchtend smaragdgrünen Farbe, die durch aus dem Untergrund ausgelaugte Mineralien vulkanischen Ursprungs entsteht.Daher ist das Baden in den Seen nicht möglich. Der touristisch bedeutsame Wanderpfad Tongariro Alpine Crossing passiert die Seen. (Quelle: <a href="https://de.wikipedia.org/wiki/Emerald_Lakes">Wikipedia</a></p>
-        
+        <p>Die Emerald Lakes (englisch für ‚Smaragdseen‘, Māori Ngarotopoum namu) sind drei kleine Kraterseen am Mount
+            Tongariro im zum Weltnaturerbe der UNESCO gehörenden Tongariro-Nationalpark in der Region Manawatu-Wanganui
+            in Neuseeland. Ihren Namen verdanken die südlich des Zentralkraters gelegenen Seen der leuchtend
+            smaragdgrünen Farbe, die durch aus dem Untergrund ausgelaugte Mineralien vulkanischen Ursprungs
+            entsteht.Daher ist das Baden in den Seen nicht möglich. Der touristisch bedeutsame Wanderpfad Tongariro
+            Alpine Crossing passiert die Seen. (Quelle: <a
+                href="https://de.wikipedia.org/wiki/Emerald_Lakes">Wikipedia</a></p>
+
         <h3>Übersichtskarte</h3>
-        <div id="map" data-lat="-39.134038" data-lng="175.654811" data-title="Emerald Seen" ></div>
+        <div id="map" data-lat="-39.134038" data-lng="175.654811" data-title="Emerald Seen"></div>
 
         <h3>Links</h3>
         <ul>
-            <li><a href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/central-north-island/places/tongariro-national-park/">Tongariro National Park</a></li>
+            <li><a
+                    href="https://www.doc.govt.nz/parks-and-recreation/places-to-go/central-north-island/places/tongariro-national-park/">Tongariro
+                    National Park</a></li>
             <li><a href="https://www.nationalpark.co.nz/">Tongariro National Park Villages</a></li>
             <li><a href="https://www.tongarirocrossing.org.nz/">Tongariro Alpine Crossing</a></li>
-            <li><a href="https://whc.unesco.org/en/list/421/">Tongariro National Park - UNESCO World Heritage Centre</a></li>
-            <li><a href="https://bibsearch.uibk.ac.at/primo-explore/search?query=title,contains,Tongariro%20National%20Park,AND&tab=default_tab&search_scope=Blended&vid=UIB&lang=de_DE&mode=advanced&offset=0">ULB Tirol BibSearch - Tongariro National Park</a></li>
+            <li><a href="https://whc.unesco.org/en/list/421/">Tongariro National Park - UNESCO World Heritage Centre</a>
+            </li>
+            <li><a
+                    href="https://bibsearch.uibk.ac.at/primo-explore/search?query=title,contains,Tongariro%20National%20Park,AND&tab=default_tab&search_scope=Blended&vid=UIB&lang=de_DE&mode=advanced&offset=0">ULB
+                    Tirol BibSearch - Tongariro National Park</a></li>
         </ul>
 
     </main>
 
     <footer>
         <hr>
-            <nav>
-                <a class="back" href="https://jome-crypto.github.io/nz/"><i class="fas fa-arrow-left"></i> Taupo</a>
-                <a class="next" href="https://itzhalpepe.github.io/nz/">Wellington <i class="fas fa-arrow-right"></i></a>
-            </nav>
-        </footer>
+        <nav>
+            <a class="back" href="https://jome-crypto.github.io/nz/"><i class="fas fa-arrow-left"></i> Taupo</a>
+            <a class="next" href="https://itzhalpepe.github.io/nz/">Wellington <i class="fas fa-arrow-right"></i></a>
+        </nav>
+    </footer>
 </body>
+
 </html>
