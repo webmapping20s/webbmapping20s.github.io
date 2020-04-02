@@ -13,3 +13,8 @@ let map = L.map("map", {
         })
     ]
 });
+
+let mrk = L.marker([
+    mapdiv.dataset.lat,
+    mapdiv.dataset.lng
+]).addTo(map);
