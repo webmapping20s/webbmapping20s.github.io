@@ -28,10 +28,6 @@ L.control.layers({
     "Thematische Darstellung" : circleGroup
 }).addTo(map);
 
-let drawCircles = function(data) {
-
-};
-
 //console.log(CONFIRMED);
 for (let i = 1; i < CONFIRMED.length; i++) {
     let row = CONFIRMED[i];
