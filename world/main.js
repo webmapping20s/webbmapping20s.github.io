@@ -23,3 +23,12 @@ L.control.layers({
     "Esri.WorldGrayCanvas": L.tileLayer.provider("Esri.WorldGrayCanvas"),
     "CartoDB.Positron": L.tileLayer.provider("CartoDB.Positron")
 }).addTo(map);
+
+//console.log(CONFIRMED);
+for (let i = 1; i < CONFIRMED.length; i++) {
+    let row = CONFIRMED[i];
+    //console.log(row[2],row[3]);
+    let val = row[row.length-1];
+    let mrk = L.marker([row[2],row[3]]).addTo(map);
+    mrk.bindPopup(`${row[0]} ${row[1]}: ${val}`);
+}
