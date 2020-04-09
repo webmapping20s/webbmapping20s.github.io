@@ -47,6 +47,8 @@ let drawCircles = function () {
     // Datum & Thema anzeigen anzeigen
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
 
+    circleGroup.clearLayers();
+
     //console.log(data);
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
