@@ -55,6 +55,10 @@ let drawCircles = function () {
 
     circleGroup.clearLayers();
 
+    data.sort(function compareNumbers(row1,row2) {
+        return row2[index] - row1[index];
+    });
+
     //console.log(data);
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
@@ -63,6 +67,12 @@ let drawCircles = function () {
         let lat = row[2];
         let lng = row[3];
         let val = row[index];
+
+        if (val === "0") {
+            continue;
+            //console.log(val)
+        }
+
         //let mrk = L.marker([lat,lng]).addTo(map);
         //mrk.bindPopup(`${reg}: ${val}`);
 
