@@ -1,7 +1,7 @@
 let startLayer = L.tileLayer.provider("Esri.WorldTopoMap");
 
 let map = L.map("map", {
-    center: [0, 0],
+    center: [30, 0],
     zoom: 2,
     layers: [
         startLayer
@@ -43,6 +43,8 @@ let drawCircles = function () {
     } else {
         data = RECOVERED;
     }
+
+    console.log(CONFIRMED == RECOVERED);
 
     // Datum & Thema anzeigen anzeigen
     document.querySelector("#datum").innerHTML = `am ${header[index]} - ${label}`;
