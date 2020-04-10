@@ -66,7 +66,7 @@ let drawCircles = function () {
         let lng = row[3];
         let val = row[index];
 
-        if (val === "0") {
+        if (val == 0) {
             continue;
             //console.log(val)
         }
