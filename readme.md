@@ -10,12 +10,12 @@
 * 12.03.  HTML (Hypertext Markup Language) 
 * 19.03.  CSS (Cascading Stylesheets)
 * 26.03.  Javascript & DOM (Document Object Model)
-* 02.04.  Leaflet Basics & WMTS (Web Map Tile Services)
-* 09.04.  Leaflet Marker & GeoJSON-Format
-* 16.04.  Leaflet Plugins I (*hash*, *fullscreen*, *markercluster*)
-* 23.04.  Leaflet Plugins II (*omnivore*,*elevation*, *gpx*)
-* 30.04.  Leaflet Interaktion im Browser I
-* 07.05.  Leaflet Interaktion im Browser II
+* 02.04.  Leaflet Basics, WMTS, Marker & Datenobjekte
+* 09.04.  Interaktion im Browser, HTML Formulare & Animationen
+* 16.04.  Open government data, GeoJSON, Icons & Markercluster
+* 23.04.  DivIcons, Farbpaletten, WMTS & Webcams
+* 30.04.  GPX, Icons & GeoNames Web Services
+* 07.05.  Openroutservice & interaktive Profile
 * *Projektphase*
 * 04.06.  Präsentationen
 
