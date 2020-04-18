@@ -1,5 +1,11 @@
 # Linksammlung
 
+## Daten der Beispiele
+
+- [COVID-Data Repository by Johns Hopkins CSSE](https://github.com/CSSEGISandData/COVID-19)
+- [Lawinen.report - Lawinenwarndienste Tirol - Südtirol - Trentino](https://lawinen.report/)
+- [Open Government Data Wien](https://digitales.wien.gv.at/site/open-data/)
+- [Wetterstationsdaten Tirol](https://www.data.gv.at/katalog/dataset/land-tirol_wetterstationsdatentirol)
 ## Lernen
 
 - [CSS cheatsheet (minimal)](https://raw.githubusercontent.com/iLoveCodingOrg/css-cheatsheet/master/css-cheatsheet.jpg)
@@ -9,6 +15,8 @@
 - [HTML Cheat Sheet](https://websitesetup.org/html5-cheat-sheet/)
 - [Introduction to Javascript (Codecademy)](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-introduction/cheatsheet)
 - [Leaflet - a JavaScript library for interactive maps](https://leafletjs.com/)
+  - [Plugin leaflet-ajax](https://github.com/calvinmetcalf/leaflet-ajax)
+  - [Plugin leaflet-markercluster](https://github.com/Leaflet/Leaflet.markercluster)
   - [Plugin leaflet.providers](https://github.com/leaflet-extras/leaflet-providers)
 - [Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn)
 - [Online Tutorials der Codecademy](https://www.codecademy.com/)
