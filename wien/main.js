@@ -44,7 +44,9 @@ let sights = L.geoJson.ajax(sightUrl, {
         });
         // console.log("Point", point);
         marker.bindPopup(`<h3>${point.properties.NAME}</h3>
-        <p><a target="links" href="${point.properties.WEITERE_INF}">Link</a></p>
+        <p>${point.properties.BEMERKUNG || ""}</p>
+        <p>Adresse: ${point.properties.ADRESSE}</p>
+        <p><a target="links" href="${point.properties.WEITERE_INF}">Weiterführende Informationen</a></p>
         `);
         return marker;
     }
@@ -59,22 +61,41 @@ sights.on("data:loaded", function () {
 let wandern = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
 
 L.geoJson.ajax(wandern, {
-    style: function () {
-        return {
-            color: "green",
-            weight: 5
-        };
+    style: function (feature) {
+        if (feature.properties.TYP == "1") {
+            return {
+                color: "black",
+                weight: 2,
+                dashArray: "15 5"
+            };
+        } else {
+            return {
+                color: "black",
+                weight: 2,
+                dashArray: "1 5"
+            };
+        }
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup(`<p>${feature.properties.BEZ_TEXT}</p>`);
     }
 }).addTo(walkGroup);
 
 let heritage = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WELTKULTERBEOGD&srsName=EPSG:4326&outputFormat=json";
 
 L.geoJson.ajax(heritage, {
-    style: function () {
-        return {
-            color: "salmon",
-            fillOpacity: 0.3
-        };
+    style: function (feature) {
+        if (feature.properties.TYP === "1") {
+            return {
+                color: "salmon",
+                fillOpacity: 0.3
+            };
+        } else {
+            return {
+                color: "yellow",
+                fillOpacity: 0.3
+            };
+        }
     },
     onEachFeature: function (feature, layer) {
         //console.log("Feature: ", feature);
