@@ -89,7 +89,7 @@ let drawTemperature = function(jsonData) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-temperature" style="background-color:${color}">${feature.properties.LT.toFixed(1)}°</div>`,
+                    html: `<div class="label-standard" style="background-color:${color}">${feature.properties.LT.toFixed(1)}°</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
@@ -135,7 +135,7 @@ let drawHumidity = function(jsonData) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-temperature" style="background-color:${color}">${Math.round(feature.properties.RH)}%</div>`,
+                    html: `<div class="label-standard" style="background-color:${color}">${Math.round(feature.properties.RH)}%</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
@@ -154,7 +154,7 @@ let drawSnow = function(jsonData) {
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
                 icon: L.divIcon({
-                    html: `<div class="label-temperature" style="background-color:${color}">${Math.round(feature.properties.HS)}cm</div>`,
+                    html: `<div class="label-standard" style="background-color:${color}">${Math.round(feature.properties.HS)}cm</div>`,
                     className: "ignore-me" // dirty hack
                 })
             })
