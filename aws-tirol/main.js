@@ -157,4 +157,6 @@ aws.on("data:loaded", function () {
     map.fitBounds(overlay.stations.getBounds());
 
     overlay.snow.addTo(map);
+
+    L.control.rainviewer().addTo(map);
 });
