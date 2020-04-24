@@ -38,11 +38,9 @@ let awsUrl = "https://aws.openweb.cc/stations";
 
 let aws = L.geoJson.ajax(awsUrl, {
     filter: function (feature) {
-        //console.log("Feature in filter: ", feature);
         return feature.properties.LT;
     },
     pointToLayer: function (point, latlng) {
-        // console.log("point: ", point);
         let marker = L.marker(latlng).bindPopup(`
         <h3>${point.properties.name} ${point.geometry.coordinates[2]} m</h3>
         <ul>
@@ -61,7 +59,6 @@ let aws = L.geoJson.ajax(awsUrl, {
 }).addTo(overlay.stations);
 
 let getColor = function(val, ramp) {
-    //console.log(val, ramp);
     let col = "red";
 
     for (let i = 0; i < ramp.length; i++) {
@@ -71,15 +68,11 @@ let getColor = function(val, ramp) {
         } else {
             col = pair[1];
         }
-        //console.log(val,pair);
     }
     return col;
 };
 
-//console.log(color);
-
 let drawTemperature = function(jsonData) {
-    //console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
         filter: function(feature) {
             return feature.properties.LT;
@@ -103,7 +96,6 @@ let drawTemperature = function(jsonData) {
 // 4. die Funktion drawWind in data:loaded aufrufen
 
 let drawWind = function(jsonData) {
-    //console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
         filter: function(feature) {
             return feature.properties.WG;
@@ -124,13 +116,11 @@ let drawWind = function(jsonData) {
 };
 
 let drawHumidity = function(jsonData) {
-    //console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
         filter: function(feature) {
             return feature.properties.RH;
         },
         pointToLayer: function(feature, latlng) {
-            console.log(feature.properties.RH)
             let color = getColor(feature.properties.RH,COLORS.humidity);
             return L.marker(latlng, {
                 title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
@@ -144,7 +134,6 @@ let drawHumidity = function(jsonData) {
 };
 
 let drawSnow = function(jsonData) {
-    //console.log("aus der Funktion", jsonData);
     L.geoJson(jsonData, {
         filter: function(feature) {
             return feature.properties.HS;
@@ -163,7 +152,6 @@ let drawSnow = function(jsonData) {
 };
 
 aws.on("data:loaded", function() {
-    //console.log(aws.toGeoJSON());
     drawTemperature(aws.toGeoJSON());
     drawWind(aws.toGeoJSON());
     drawHumidity(aws.toGeoJSON());
@@ -171,6 +159,4 @@ aws.on("data:loaded", function() {
     map.fitBounds(overlay.stations.getBounds());
 
     overlay.snow.addTo(map);
-
-    //console.log(COLORS);
 });
