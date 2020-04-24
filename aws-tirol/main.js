@@ -9,7 +9,8 @@ let map = L.map("map", {
 let overlay = {
     stations: L.featureGroup(),
     temperature: L.featureGroup(),
-    wind: L.featureGroup()
+    wind: L.featureGroup(),
+    humidity: L.featureGroup()
 }
 
 L.control.layers({
@@ -27,7 +28,8 @@ L.control.layers({
 }, {
     "Wetterstationen Tirol": overlay.stations,
     "Temperatur (°C)": overlay.temperature,
-    "Windgeschwindigkeit (km/h)": overlay.wind
+    "Windgeschwindigkeit (km/h)": overlay.wind,
+    "Relative Luftfeuchte (%)": overlay.humidity
 }).addTo(map);
 
 let awsUrl = "https://aws.openweb.cc/stations";
@@ -119,13 +121,34 @@ let drawWind = function(jsonData) {
     }).addTo(overlay.wind);
 };
 
+let drawHumidity = function(jsonData) {
+    //console.log("aus der Funktion", jsonData);
+    L.geoJson(jsonData, {
+        filter: function(feature) {
+            return feature.properties.RH;
+        },
+        pointToLayer: function(feature, latlng) {
+            console.log(feature.properties.RH)
+            let color = getColor(feature.properties.RH,COLORS.humidity);
+            return L.marker(latlng, {
+                title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m)`,
+                icon: L.divIcon({
+                    html: `<div class="label-temperature" style="background-color:${color}">${Math.round(feature.properties.RH)}%</div>`,
+                    className: "ignore-me" // dirty hack
+                })
+            })
+        }
+    }).addTo(overlay.humidity);
+};
+
 aws.on("data:loaded", function() {
     //console.log(aws.toGeoJSON());
     drawTemperature(aws.toGeoJSON());
     drawWind(aws.toGeoJSON());
+    drawHumidity(aws.toGeoJSON());
     map.fitBounds(overlay.stations.getBounds());
 
-    overlay.wind.addTo(map);
+    overlay.humidity.addTo(map);
 
     //console.log(COLORS);
 });
