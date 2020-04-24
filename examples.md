@@ -10,8 +10,8 @@ Umwandeln von CSV-Daten in JSON Arrays bei convertcsv.com; *if, else if, else Ab
 
 ### [Wien Open Government Data](https://webmapping.github.io/wien/index.html)
 
-GeoJSON Punkte, Linien und Flächen zeichnen; Daten asynchron mit *L.geoJson.ajax* Plugin laden; *pointToLayer* Funktion für Marker mit *L.icon*; *style* Funktion für Farben von Linien und Flächen; *onEachFeature* Funktion für Popups aus *feature.properties* Attributen; *map.fitBounds* in Kkombination mit *.getBounds()* im *data:loaded* Callback zum Setzen des Kartenausschnitts nach dem Zeichnen der Marker; Zusammenfassen von Markern über das *L.markerClusterGroup* Plugin; Popups mit Bildern aus *feature.properties* Attributen; strichlierte und punktierte Linien mit *dashArray*
+GeoJSON Punkte, Linien und Flächen zeichnen; Daten asynchron mit *leaflet-ajax* Plugin über *L.geoJson.ajax* laden; *pointToLayer* Funktion für Marker mit *L.icon*; *style* Funktion für Farben von Linien und Flächen; *onEachFeature* Funktion für Popups aus *feature.properties* Attributen; *map.fitBounds* in Kombination mit *.getBounds()* im *data:loaded* Callback zum Setzen des Kartenausschnitts nach dem Zeichnen der Marker; Zusammenfassen von Markern über das *leaflet-markercluster* Plugin und *L.markerClusterGroup*; Popups mit Bildern aus *feature.properties* Attributen; strichlierte und punktierte Linien mit *dashArray*
 
 ### [Wetterstationen Tirol](https://webmapping.github.io/aws-tirol/index.html)
 
-work-in-progress ...
+*L.geoJson.ajax* mit *.getGeoJSON()* in *data:loaded* zum Zeichnen mehrerer Layer verwenden; *filter* Funktion für geoJSON-Objekte; den logischen Operator *||* verwenden (z.B *feature.properties.WG || "-"* bei missing values in Popups); *.toFixed(5)* für Kontrolle der Nachkommastellen bei Zahlen wie Lat/Lng; Marker als Texte über *L.divIcon* mit Styling in CSS; Schrift freistellen mit CSS *text-shadow*; Elemente rotieren über CSS *transform(30deg)*; Farbpaletten über *Elemente untersuchen* im Browser von bestehenden Kartenapplikationen extrahieren; Farben nach Wert und Schwellen aus Farbpaletten zuweisen; *Leaflet.Rainviewer* Plugin verwenden
