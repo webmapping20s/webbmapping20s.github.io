@@ -18,6 +18,7 @@
   - [Plugin leaflet-ajax](https://github.com/calvinmetcalf/leaflet-ajax)
   - [Plugin leaflet-markercluster](https://github.com/Leaflet/Leaflet.markercluster)
   - [Plugin leaflet.providers](https://github.com/leaflet-extras/leaflet-providers)
+  - [Plugin Leaflet.Rainviewer](https://github.com/mwasil/Leaflet.Rainviewer)
 - [Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn)
 - [Online Tutorials der Codecademy](https://www.codecademy.com/)
 - [SELFHTML-Wiki](https://wiki.selfhtml.org/wiki/)
