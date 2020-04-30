@@ -77,3 +77,12 @@ let drawEtappe = function(nr) {
 };
 drawEtappe(10);
 
+let pulldown = document.querySelector("#pulldown");
+console.log(pulldown);
+
+for (let i = 1; i < ETAPPEN.length; i++) {
+    const etappe = ETAPPEN[i];
+    console.log(etappe);
+    pulldown.innerHTML += `<option value="${i}">${etappe.titel}</option>`;
+}
+
