@@ -56,7 +56,7 @@ let drawEtappe = function(nr) {
     let gpx = new L.GPX(`gpx/AdlerwegEtappe${track}.gpx`, {
         async: true,
         marker_options: {
-            startIconUrl: "icons/number_1.png",
+            startIconUrl: `icons/number_${nr}.png`,
             endIconUrl: "icons/finish.png",
             shadowUrl: null,
             iconSize: [32, 37],
