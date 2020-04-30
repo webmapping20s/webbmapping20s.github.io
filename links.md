@@ -2,10 +2,12 @@
 
 ## Daten der Beispiele
 
+- [Adlerweg Tirol](https://www.data.gv.at/katalog/dataset/land-tirol_adlerwegtirol)
 - [COVID-Data Repository by Johns Hopkins CSSE](https://github.com/CSSEGISandData/COVID-19)
 - [Lawinen.report - Lawinenwarndienste Tirol - Südtirol - Trentino](https://lawinen.report/)
 - [Open Government Data Wien](https://digitales.wien.gv.at/site/open-data/)
 - [Wetterstationsdaten Tirol](https://www.data.gv.at/katalog/dataset/land-tirol_wetterstationsdatentirol)
+
 ## Lernen
 
 - [CSS cheatsheet (minimal)](https://raw.githubusercontent.com/iLoveCodingOrg/css-cheatsheet/master/css-cheatsheet.jpg)
@@ -29,6 +31,7 @@
 - [CSV To JSON Converter](https://www.convertcsv.com/csv-to-json.htm)
 - [Font Awesome Icons](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
+- [Map Icons Collection](https://mapicons.mapsmarker.com/)
 - [Pixabay - Gratis-Bilder zum Herunterladen](https://pixabay.com/)
 - [Wikimedia Commons - Bilder der Wikipedia](https://commons.wikimedia.org/wiki/Main_Page)
 
