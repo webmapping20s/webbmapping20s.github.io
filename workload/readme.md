@@ -7,3 +7,4 @@
 - [WL5: HTML Forms Online Tutorial der *Codecademy*](https://webmapping.github.io/workload/wl5)
 - [WL6: GeoJson-Beispiele Wien, AWS-Tirol verfeinern](https://webmapping.github.io/workload/wl6)
 - [WL7: Beispiel Wetterstationen Tirol erweitern](https://webmapping.github.io/workload/wl7)
+- [WL8: Beispiel Adlerweg erweitern und zwei Kleinigkeiten](https://webmapping.github.io/workload/wl8)
