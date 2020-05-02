@@ -79,11 +79,11 @@ let drawEtappe = function(nr) {
     for (const key in ETAPPEN[nr]) {
         if (ETAPPEN[nr].hasOwnProperty(key)) {
             const val = ETAPPEN[nr][key];
-            console.log(`et-${key}`);
+            //console.log(`et-${key}`);
             let elem = document.querySelector(`#et-${key}`);
             if (elem) {
                 elem.innerHTML = val;
-                console.log(val);
+                //console.log(val);
             }
         }
     }
