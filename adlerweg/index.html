@@ -37,12 +37,42 @@
     <main>
         <h2 id="et-titel">Adlerweg - Tirols bekanntester Wanderweg</h2>
         <p id="et-text">In der hochalpinen Bergwelt, nah unterm Himmel, verläuft der Adlerweg von Osten nach Westen durch ganz Tirol. Der Wegverlauf gleicht der Silhouette eines Adlers, der mit weit ausgebreiteten Schwingen in den Lüften schwebt. Wer das Weitwander-Abenteuer annimmt, wird von der Vielseitigkeit des Adlerwegs begeistert sein. Der Verlauf durch die verschiedenen Gebirgszüge garantiert Abwechslung: Wer das Land mit weitläufigen Wanderungen entdecken will, wird ebenso begeistert sein wie geübte Bergsteiger und Alpinisten, die nach Gipfelsiegen streben. Alpine Erfahrung, Trittsicherheit und Schwindelfreiheit sind die Voraussetzung bei vielen Etappen.</p>
+
+        <div class="summary">
+            <div class="badge">
+                <i class="fas fa-walking"></i> <span id="et-km"></span>km
+            </div>
+            <div class="badge">
+                <i class="fas fa-clock"></i> <span id="et-stunden"></span>h
+            </div>
+            <div class="badge">
+                <i class="fas fa-sort-amount-up-alt"></i> <span id="et-auf"></span>m
+            </div>
+            <div class="badge">
+                <i class="fas fa-mountain"></i> <span id="et-hp"></span>m
+            </div>
+            <div class="badge">
+                <i class="fas fa-sort-amount-down-alt"></i> <span id="et-ab"></span>m
+            </div>
+            <div class="badge">
+                <em><span id="et-grad"></span></em>
+            </div>
+            <div class="badge">
+                <i class="fas fa-download"></i> <span id="et-track"></span>
+            </div>
+        </div>
+
         <select id="pulldown"></select>
         <div id="map"></div>
-        <p id="et-info"></p>
-        <h3>Start: <span id="et-start"></span></h3>
-        <h3>Ziel: <span id="et-ziel"></span></h3>
-        <p>Die Etappe ist <span id="et-km"></span>km lang</p>
+
+        <h3>Streckenbeschreibung</h3>
+        <p>
+            <strong>Start</strong>: <span id="et-start"></span> |
+            <strong>Ziel</strong>: <span id="et-ziel"></span> |
+            <strong>Einkehrmöglichkeiten</strong>: <span id="et-einkehr"></span>
+        </p>
+        <div id="et-info"></div>
+
     </main>
 
 </body>

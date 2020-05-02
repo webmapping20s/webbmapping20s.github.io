@@ -41,3 +41,15 @@ main h2 {
     height: 70vh;
     border: 1px solid gray;
 }
+
+.summary {
+    margin-bottom: 2em;
+}
+
+.badge {
+    display: inline;
+    padding: 0.4em;
+    border: 1px solid silver;
+    border-radius: 10px;
+    margin-right: 0.5em;
+}
