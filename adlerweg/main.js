@@ -77,12 +77,14 @@ let drawEtappe = function(nr) {
     overlay.etappen.addTo(map);
 
     for (const key in ETAPPEN[nr]) {
-        const val = ETAPPEN[nr][key];
-        console.log(`et-${key}`);
-        let elem = document.querySelector(`#et-${key}`);
-        if (elem) {
-            elem.innerHTML = val;
-            console.log(val);
+        if (ETAPPEN[nr].hasOwnProperty(key)) {
+            const val = ETAPPEN[nr][key];
+            console.log(`et-${key}`);
+            let elem = document.querySelector(`#et-${key}`);
+            if (elem) {
+                elem.innerHTML = val;
+                console.log(val);
+            }
         }
     }
 
