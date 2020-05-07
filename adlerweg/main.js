@@ -147,6 +147,8 @@ L.control.scale({
     imperial: false
 }).addTo(map);
 
+let drawnMarkers = {};
+
 map.on("zoomend moveend", function (evt) {
     let ext = {
         north : map.getBounds().getNorth(),
@@ -160,6 +162,12 @@ map.on("zoomend moveend", function (evt) {
     let wiki = L.Util.jsonp(url).then( function(data) {
         //console.log(data.geonames);
         for (let article of data.geonames) {
+            let ll = `${article.lat}${article.lng}`;
+            if (drawnMarkers[ll]) {
+                continue;
+            } else {
+                drawnMarkers[ll] = true;
+            }
 
             let png = "";
             //console.log(article.feature)
@@ -198,7 +206,14 @@ map.on("zoomend moveend", function (evt) {
             }
             console.log(png);
 
-            let mrk = L.marker([article.lat,article.lng]).addTo(overlay.wikipedia);
+            let mrk = L.marker([article.lat,article.lng], {
+                icon: L.icon({
+                    iconSize: [32, 37],
+                    iconAnchor: [16, 37],
+                    popupAnchor: [0, -37],
+                    iconUrl: `icons/${png}`
+                })
+            }).addTo(overlay.wikipedia);
             let img = "";
             if (article.thumbnailImg) {
                 img = `<img src="${article.thumbnailImg}" alt="thumbnail">`
