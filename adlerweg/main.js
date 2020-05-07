@@ -161,9 +161,14 @@ map.on("zoomend moveend", function (evt) {
         //console.log(data.geonames);
         for (let article of data.geonames) {
             let mrk = L.marker([article.lat,article.lng]).addTo(overlay.wikipedia);
+            let img = "";
+            if (article.thumbnailImg) {
+                img = `<img src="${article.thumbnailImg}" alt="thumbnail">`
+            }
             mrk.bindPopup(`
                 <small>${article.feature}</small>
                 <h3>${article.title} (${article.elevation}m)</h3>
+                ${img}
                 <p>${article.summary}</p>
                 <a target="wikipedia" href="https://${article.wikipediaUrl}">Wikipedia Artikel</a>
             `)
