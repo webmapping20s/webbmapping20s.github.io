@@ -53,3 +53,7 @@ main h2 {
     border-radius: 10px;
     margin-right: 0.5em;
 }
+
+.adler-theme.elevation-polyline {
+    stroke-opacity: 0.0;
+}
