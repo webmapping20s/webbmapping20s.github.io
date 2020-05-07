@@ -160,6 +160,44 @@ map.on("zoomend moveend", function (evt) {
     let wiki = L.Util.jsonp(url).then( function(data) {
         //console.log(data.geonames);
         for (let article of data.geonames) {
+
+            let png = "";
+            //console.log(article.feature)
+            switch (article.feature) {
+                case "city":
+                    png = "smallcity.png";
+                    break;
+                case "landmark":
+                    png = "landmark.png";
+                    break;
+                case "waterbody":
+                    png = "lake.png";
+                    break;
+                case "river":
+                    png = "river-2.png";
+                    break;
+                case "mountain":
+                    png = "mountains.png";
+                    break;
+                case "glacier":
+                    png = "glacier-2.png";
+                    break;
+                case "airport":
+                    png = "helicopter.png";
+                    break;
+                case "railwaystation":
+                    png = "train.png";
+                    break;
+                case "adm1st":
+                    case "adm2nd":
+                        case "adm3rd":
+                            png = "administration.png";
+                            break;
+                default:
+                    png = "information.png";
+            }
+            console.log(png);
+
             let mrk = L.marker([article.lat,article.lng]).addTo(overlay.wikipedia);
             let img = "";
             if (article.thumbnailImg) {
@@ -177,3 +215,4 @@ map.on("zoomend moveend", function (evt) {
     });
 });
 overlay.wikipedia.addTo(map);
+
