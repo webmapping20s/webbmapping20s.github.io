@@ -36,7 +36,7 @@ Die Teamkommunikation könnte ihr über OLAT oder [https://easyconference.uibk.a
     - Web-Adresse: `https://ORGNAME.github.io/konzept.pdf`
 
 2. Abgabe des Projektberichts (**Mittwoch, 3. Juni 2020 12:00 Uhr**)
-    - Kurszbeschreibung des Projekts
+    - Kurzbeschreibung des Projekts
     - Darstellung der Implementierungsschritte und eingesetzten Techniken
     - Quellenangaben der verwendeten Daten, Plugins als einheitliches Literaturverzeichnis
     - mindestens 12 Seiten (mit Grafiken und Literaturverzeichnis) als PDF
