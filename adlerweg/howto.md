@@ -659,7 +659,7 @@ Wenn wir beim Laden der Seite eine andere als die erste Etappe zeichnen wollen k
 
 1. beim Aufruf der Seite einen URL-Parameter `track` mit einer Etappennummer definieren
 
-    * [index.html?track=5](https://webmapping.github.io/adlerweg/index.html?track=5)
+    * [index.html?track=5](index.html?track=5)
 
 2. über `document.location.search` den gewünschten Track auslesen und als erstes zeichnen
 
