@@ -176,6 +176,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
             })
         }
     }).addTo(overlay.temperature);
+    ```
 
 6. statt als Marker zeigen wir den Temperaturwert mit einer Kommastelle direkt als `L.divIcon` und damit als Text in der Karte an. Der angezeigte Text wird über das `html`-Attribut definiert
 
