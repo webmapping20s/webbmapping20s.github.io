@@ -102,7 +102,12 @@ let drawEtappe = function (nr) {
     }
 
 };
-drawEtappe(1);
+
+let nr = 1;
+    if (document.location.search) {
+        nr = document.location.search.replace("?track=", "");
+  }
+drawEtappe(nr);
 
 let pulldown = document.querySelector("#pulldown");
 //console.log(pulldown);
