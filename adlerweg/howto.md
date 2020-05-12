@@ -474,7 +474,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
     * dann setzen wir mit template-Syntax die URL zusammen
 
         ```
-        let url = `http://api.geonames.org/wikipediaBoundingBoxJSON?lang=de&maxRows=30&north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=webmapping`;
+        let url = `http://secure.geonames.org/wikipediaBoundingBoxJSON?lang=de&maxRows=30&north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=webmapping`;
         ```
 
     * den Request schicken über die neue Methode `L.Util.jsonp` des `leaflet-ajax` Plugins ([https://github.com/calvinmetcalf/leaflet-ajax](https://github.com/calvinmetcalf/leaflet-ajax)) an die GeoNames Webseite
