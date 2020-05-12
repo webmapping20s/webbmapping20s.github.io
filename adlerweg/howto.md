@@ -1,4 +1,4 @@
-# Adlerweg Beispiel HOWTO
+# [Adlerweg Beispiel](index.html) HOWTO
 
 Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip) -> auspacken als `username.github.io/adlerweg`
 
