@@ -318,6 +318,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         [1, "Obere Regalm", 47.546580213664484, 12.344464614998289],
         [1, "Gaudeamushütte", 47.54922123957281, 12.324573308251276]
     ];
+    ```
 
 * nach dem Einbinden in `index.html` können wir sie visualisieren
 
