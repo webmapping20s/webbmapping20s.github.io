@@ -58,9 +58,9 @@ sights.on("data:loaded", function () {
     map.fitBounds(sightGroup.getBounds());
 });
 
-let wandern = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
+let walkUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
 
-L.geoJson.ajax(wandern, {
+L.geoJson.ajax(walkUrl, {
     style: function (feature) {
         if (feature.properties.TYP == "1") {
             return {
