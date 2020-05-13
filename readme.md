@@ -17,7 +17,7 @@
 * 30.04.  GPX, Icons & GeoNames Web Services
 * 07.05.  Openroutservice & interaktive Profile
 * *Projektphase*
-* 04.06.  Präsentationen
+* 18.06.  Präsentationen
 
 ### Anforderungen
 * 1/3 **Anwesenheit & aktive Mitarbeit**: maximal 2 x fehlen

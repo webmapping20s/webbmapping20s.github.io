@@ -35,14 +35,14 @@ Die Teamkommunikation könnte ihr über OLAT oder [https://easyconference.uibk.a
     - nur textlich, ohne Screenshots/Grafiken
     - Web-Adresse: `https://ORGNAME.github.io/konzept.pdf`
 
-2. Abgabe des Projektberichts (**Mittwoch, 3. Juni 2020 12:00 Uhr**)
+2. Abgabe des Projektberichts (**Mittwoch, 17. Juni 2020 12:00 Uhr**)
     - Kurzbeschreibung des Projekts
     - Darstellung der Implementierungsschritte und eingesetzten Techniken
     - Quellenangaben der verwendeten Daten, Plugins als einheitliches Literaturverzeichnis
     - mindestens 12 Seiten (mit Grafiken und Literaturverzeichnis) als PDF
     - Web-Adresse: `https://ORGNAME.github.io/bericht.pdf`
 
-3. Projektpräsentationen (**Donnerstag, 4. Juni 2020, 15:30 - 18:45 Uhr**)
+3. Projektpräsentationen (**Donnerstag, 18. Juni 2020, 15:30 - 18:45 Uhr**)
     - pro Gruppe 15 Minuten Vortrag im virtuellen Klassenzimmer mit Bildschirmfreigabe + 5 Minuten Diskussion
     - Jedes Teammitglied präsentiert (s)einen Teil des Projekts
     - Web-Adresse für die Präsentation als PDF: `https://ORGNAME.github.io/folien.pdf`
