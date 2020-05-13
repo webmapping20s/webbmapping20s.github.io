@@ -81,9 +81,9 @@ L.geoJson.ajax(walkUrl, {
     }
 }).addTo(walkGroup);
 
-let heritage = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WELTKULTERBEOGD&srsName=EPSG:4326&outputFormat=json";
+let heritageUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WELTKULTERBEOGD&srsName=EPSG:4326&outputFormat=json";
 
-L.geoJson.ajax(heritage, {
+L.geoJson.ajax(heritageUrl, {
     style: function (feature) {
         if (feature.properties.TYP === "1") {
             return {
