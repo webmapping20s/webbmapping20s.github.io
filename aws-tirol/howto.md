@@ -1,10 +1,10 @@
-# [AWS-Tirol](index.html) HOWTO
+# [Wetterstationen Tirol](index.html) HOWTO
 
 Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip) -> auspacken als `username.github.io/aws-tirol`
 
 ## A. Wetterstationsdaten mit Marker und Popup anzeigen
 
-1. ein neues Overlay für die Stationen hinzufügen
+1. ein neues Overlay für die Stationen bei [L.control.layers](https://leafletjs.com/reference.html#control-layers) mit [L.featureGroup](https://leafletjs.com/reference.html#featuregroup) hinzufügen
 
     * vor `L.control.layers`
 
@@ -56,7 +56,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 4. ein Popup für die Stationsdaten hinzufügen
 
-    * in der `pointToLayer` Funktion des `aws` GeoJSON-Objekts können wir die Werte der `.properties` als Popup anzeigen
+    * in der [pointToLayer](https://leafletjs.com/reference.html#geojson-pointtolayer) Funktion des `aws` GeoJSON-Objekts können wir die Werte der `.properties` als Popup anzeigen
 
         ```
         pointToLayer: function(point, latlng) {
@@ -71,7 +71,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         }
         ```
 
-    * zum Filtern der Stationsdaten verwenden wir die Funktion `filter` des `aws` GeoJSON-Objekts. In ihre können wir Eigenschaften unserer Stationsdaten abfragen und je nachdem ob wir bei unserer Abfrage `true` oder `false` zurückgeben wird der Marker angezeigt oder nicht.
+    * zum Filtern der Stationsdaten verwenden wir die Funktion [filter](https://leafletjs.com/reference.html#geojson-filter) des `aws` GeoJSON-Objekts. In ihre können wir Eigenschaften unserer Stationsdaten abfragen und je nachdem ob wir bei unserer Abfrage `true` oder `false` zurückgeben wird der Marker angezeigt oder nicht.
     
     * zeigen wir zum Testen nur Stationen an, deren Temperatur über 5°C liegt
 
@@ -91,7 +91,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         }
         ```
 
-    * letzendlich entscheiden wir uns dazu, dass wir nur Stationen mit Temperaturwerten anzeigen
+    * letztendlich entscheiden wir uns dazu, dass wir nur Stationen mit Temperaturwerten anzeigen
 
         ```
         filter: function(feature) {
@@ -114,7 +114,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     * und ersetzen alle `awsLayer` Stellen mit `overlay.stations`
     * damit sind die Stationen jetzt nicht automatisch sichtbar, aber das wird sich im nächsten Schritt ändern
 
-2. wir fügen ein Callback `data:loaded` des `aws`-Objekts hinzu und holen uns dort die GeoJSON Daten über `.toGeoJSON()` (*Methods inherited from LayerGroup bei GeoJSON in der Hilfe*) noch einmal, denn wir wollen nicht nur Stationsmarker setzen, sondern auch thematische Layer hinzufügen. Die Daten sind schon vorhanden, wir müssen also keine neuen Ajax requests machen. Den Ausschnitt auf die Stationen setzen wir auch gleich mit und die automatische Anzeige der Marker wird auch gefixed.
+2. wir fügen ein Callback `data:loaded` des `aws`-Objekts hinzu und holen uns dort die Original GeoJSON Daten über [toGeoJSON](https://leafletjs.com/reference.html#geojson-togeojson) noch einmal, denn wir wollen nicht nur Stationsmarker setzen, sondern auch thematische Layer hinzufügen. Die Daten sind schon vorhanden, wir müssen also keine neuen Ajax requests machen. Den Ausschnitt auf die Stationen setzen wir auch gleich mit und die automatische Anzeige der Marker wird auch gefixt.
 
     ```
     aws.on("data:loaded", function() {
@@ -129,7 +129,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * `center` und `zoom` bei `L.map` können wir damit löschen
 
-3. das Zeichnen der Temperaturdaten erledigen wir in einer eigenen Funktion `drawTemperature`, die wir aus `data:loaded` aufrufen und ihr beim Aufruf die GeoJSON Daten gleich mitübergeben
+3. das Zeichnen der Temperaturdaten erledigen wir in einer eigenen Funktion `drawTemperature`, die wir aus `data:loaded` aufrufen und ihr beim Aufruf die GeoJSON Daten gleich mit übergeben
 
     ```
     let drawTemperature = function(jsonData) {
@@ -166,7 +166,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         overlay.temperature.addTo(map);
         ```
 
-5. über `pointToLayer` definieren wir explizit einen Marker mit dem Stationsnamen als Tooltip. Der Tooltip wird über das `title`-Attribut definiert
+5. über `pointToLayer` definieren wir explizit einen Marker mit dem Stationsnamen als Tooltipp. Der Tooltipp wird über das [title](https://leafletjs.com/reference.html#marker-title)-Attribut von `L.marker` definiert
 
     ```
     L.geoJson(jsonData, {
@@ -178,7 +178,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     }).addTo(overlay.temperature);
     ```
 
-6. statt als Marker zeigen wir den Temperaturwert mit einer Kommastelle direkt als `L.divIcon` und damit als Text in der Karte an. Der angezeigte Text wird über das `html`-Attribut definiert
+6. statt als Marker zeigen wir den Temperaturwert mit einer Kommastelle direkt als [L.divIcon](https://leafletjs.com/reference.html#divicon) und damit als Text in der Karte an. Der angezeigte Text wird über das [html](https://leafletjs.com/reference.html#divicon-html)-Attribut von `L.divIcon` definiert
 
     ```
     title: `...`,
@@ -229,11 +229,11 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 ## C. Wind-Layer mit Windgeschwindigkeit in km/h implementieren
 
-Nach dem gleichen Muster wie beim Temperaturlayer können wir die Windgeschwindigkeit visualisiern in dem wir:
+Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwindigkeit visualisieren in dem wir:
 
 1. ein neues Overlay `wind` definieren, zu `L.control.layers` hinzufügen und als Default anzeigen
 
-2. die Funktion `drawWind` als 1:1 Kopie von `drawTemperature` definieren und danach anpasssen - statt der Temperatur zeigen wir die Windgeschwindigkeit in km/h an
+2. die Funktion `drawWind` als 1:1 Kopie von `drawTemperature` definieren und danach anpassen - statt der Temperatur zeigen wir die Windgeschwindigkeit in km/h an
 
     ```
     let kmh = Math.round(feature.properties.WG / 1000 * 3600);
@@ -287,7 +287,7 @@ Nach dem gleichen Muster wie beim Temperaturlayer können wir die Windgeschwindi
     console.log(getColor(40,COLORS.temperature));    
     ```
 
-2. in einer `for-Schleife` gehen wir dann die Farbpalettte durch und vergleichen jeweils Schwelle mit Wert:
+2. in einer `for-Schleife` gehen wir dann die Farbpalette durch und vergleichen jeweils Schwelle mit Wert:
     * ist der Wert kleiner als die Schwelle merken wir uns die Farbe zu dieser Schwelle und gehen zur nächsten Schwelle weiter
     * ist der Wert größer oder gleich der Schwelle brechen wir ab, denn wir haben in der letzten Farbe schon die richtige Farbe ermittelt
 
@@ -309,13 +309,13 @@ Nach dem gleichen Muster wie beim Temperaturlayer können wir die Windgeschwindi
     }
     ```
 
-3. zum Schluß geben wir die ermittelte Farbe zurück
+3. zum Schluss geben wir die ermittelte Farbe zurück
 
     ```
     return col;
     ```
 
-4. diese Funktion verwenden wir jetzt in `pointToLayer` und setzen die Hintergrundfarbe des Temperaturelabels über ein CSS *style-Attribut*
+4. diese Funktion verwenden wir jetzt in `pointToLayer` und setzen die Hintergrundfarbe des Temperaturlabels über ein CSS *style-Attribut*
 
     ```
     let col = getColor(feature.properties.LT, COLORS.temperature);
@@ -328,7 +328,7 @@ Nach dem gleichen Muster wie beim Temperaturlayer können wir die Windgeschwindi
 
 ## F. Visualisieren der Windrichtung über Font Awesome
 
-1. wir zeigen zuerst Stationsname und Windgeschwindigkeit in km/h als Tooltip an
+1. wir zeigen zuerst Stationsname und Windgeschwindigkeit in km/h als Tooltipp an
 
     ```
     title: `${feature.properties.name}: ${kmh} km/h`
