@@ -35,12 +35,12 @@ let sightUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature
 
 let sights = L.geoJson.ajax(sightUrl, {
     pointToLayer: function (point, latlng) {
-        let icon = L.icon({
+        let siteIcon = L.icon({
             iconUrl: 'icons/sight.svg',
             iconSize: [32, 32]
         });
         let marker = L.marker(latlng, {
-            icon: icon
+            icon: siteIcon
         });
         // console.log("Point", point);
         marker.bindPopup(`<h3>${point.properties.NAME}</h3>
