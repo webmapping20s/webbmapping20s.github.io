@@ -1,6 +1,6 @@
 # Arbeitsbeispiele
 
-### [Neuseelandreise in 18 Etappen](https://webmapping.github.io/nz/route.html)
+### [Neuseelandreise in 18 Etappen](https://webmapping.github.io/nz/index.html) - [Etappen](https://webmapping.github.io/nz/route.html)
 
 HTML Seitenstruktur mit *head*, *body*, *header*, *main*, *div*, *footer*, *nav*; Überschriften, Links, Abbildungen mit *figure*, *img* und *figcaption*; public-domain Bilder von pixabay.com und wikimedia; Bildbearbeitung mit GIMP; Styling mit CSS in *main.css*, Responsive Design mit *max-width* und *@media* Regeln; Webfonts mit Google Fonts; Icons mit Font Awesome; *defer-Attribut* für das zentrale Javascript *main.js*; erste Leafletkarte mit *L.map* und einem Hintergrundlayer (*L.tileLayer*) aus *leaflet-providers*; Auslesen von *data-Attributen* des Karten-DIVS über *document.querySelector* zur Positionierung eines Markers mit *L.marker*; *template-Syntax* mit \`Backticks\` bei *.bindPopup*
 
