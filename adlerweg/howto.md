@@ -51,13 +51,13 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     }
     ```
 
-2. [L.icon](https://leafletjs.com/reference-1.6.0.html#icon) mit einem passenden Piktogramm statt dem Standardmarker
+2. [L.icon](https://leafletjs.com/reference.html#icon) mit einem passenden Piktogramm statt dem Standardmarker
 
     * Google Suche "*Map Icons Collection*" -> [https://mapicons.mapsmarker.com/](https://mapicons.mapsmarker.com/)
 
         - als Icon verwenden wir: *Tourism / Dark / Panoramic View*
         - Rechte Maus und *Save image as* in einem Unterverzeichnis `icons/`
-        - beim Einbauen als `L.icon` müssen wir die Adresse des Icons als [iconUrl](https://leafletjs.com/reference-1.6.0.html#icon-iconurl) angeben:
+        - beim Einbauen als `L.icon` müssen wir die Adresse des Icons als [iconUrl](https://leafletjs.com/reference.html#icon-iconurl) angeben:
 
             ```
             icon: L.icon({
@@ -72,9 +72,9 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         ```
         
         - Standardanfasspunkt bei Icons ist *links oben* - das entspricht `[0, 0]`
-        - Mitte des Bilds wenn die Größe über [iconSize](https://leafletjs.com/reference-1.6.0.html#icon-iconsize) angegeben wird: z.B. `iconSize: [32,37]`
-        - beliebig mit [iconAnchor](https://leafletjs.com/reference-1.6.0.html#icon-iconanchor): z.B. `iconAnchor: [16, 37]`
-        - die Popup-Position definiert [popupAnchor](https://leafletjs.com/reference-1.6.0.html#icon-popupanchor): z.B. `popupAnchor: [0, -37]` 
+        - Mitte des Bilds wenn die Größe über [iconSize](https://leafletjs.com/reference.html#icon-iconsize) angegeben wird: z.B. `iconSize: [32,37]`
+        - beliebig mit [iconAnchor](https://leafletjs.com/reference.html#icon-iconanchor): z.B. `iconAnchor: [16, 37]`
+        - die Popup-Position definiert [popupAnchor](https://leafletjs.com/reference.html#icon-popupanchor): z.B. `popupAnchor: [0, -37]` 
 
 3. zum Schluss die Adlerblicke in eine ein/ausschaltbare Overlay-Gruppe bringen
 
@@ -459,9 +459,9 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
         * bei Event-Listenern in Leaflet können wir auch mehrere Events gleichbehandeln indem wir sie durch ein Leerzeichen trennen
         
-        * beim Hineinzoomen wird [zoomend](https://leafletjs.com/reference-1.6.0.html#map-zoomend) und beim Ausschnitt Verschieben [moveend](https://leafletjs.com/reference-1.6.0.html#map-moveend) angesprochen
+        * beim Hineinzoomen wird [zoomend](https://leafletjs.com/reference.html#map-zoomend) und beim Ausschnitt Verschieben [moveend](https://leafletjs.com/reference.html#map-moveend) angesprochen
 
-    * den Ausschnitt ermitteln wir aus [getBounds](https://leafletjs.com/reference-1.6.0.html#map-getbounds) des `map`-Objekts. In diesem [LatLngBounds](https://leafletjs.com/reference-1.6.0.html#latlngbounds) Objekt bekommen wir die Eckkoordinaten über [getNorth](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getnorth), [getSouth](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getsouth), [getEast](https://leafletjs.com/reference-1.6.0.html#latlngbounds-geteast) und [getWest](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getwest)
+    * den Ausschnitt ermitteln wir aus [getBounds](https://leafletjs.com/reference.html#map-getbounds) des `map`-Objekts. In diesem [LatLngBounds](https://leafletjs.com/reference.html#latlngbounds) Objekt bekommen wir die Eckkoordinaten über [getNorth](https://leafletjs.com/reference.html#latlngbounds-getnorth), [getSouth](https://leafletjs.com/reference.html#latlngbounds-getsouth), [getEast](https://leafletjs.com/reference.html#latlngbounds-geteast) und [getWest](https://leafletjs.com/reference.html#latlngbounds-getwest)
 
         ```
         let ext = {
