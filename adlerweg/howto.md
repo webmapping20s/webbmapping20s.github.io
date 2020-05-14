@@ -8,7 +8,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 2. [CSV-Datei zum Tiroler Adlerweg](https://www.data.gv.at/katalog/dataset/land-tirol_adlerwegtirol/resource/a192cb91-0fe9-4cff-9b28-d3091f5701d7) ansteuern
 
-    * Öffnen mit `Libreoffice`
+    * Öffnen mit `LibreOffice`
     * Zeichensatz: *Westeuropäisch (Windows-1252/WinLatin 1)*
     * Sprache: Deutsch (Österreich)
     * Trennoptionen: Semikolon
@@ -16,25 +16,25 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 3. in JSON-Objekt umwandeln
     * [CSV To JSON converter](https://www.convertcsv.com/csv-to-json.htm)
-    * Tabelle kopieren umd mit Option der Option *CSV To JSON* in einen Array von Objekten konvertieren
-    * die Keys der Etappenobjekte sind noch nicht brauchbar, deshalb in `LiberOffice`:
+    * Tabelle kopieren und mit Option der Option *CSV To JSON* in einen Array von Objekten konvertieren
+    * die Keys der Etappenobjekte sind noch nicht brauchbar, deshalb in `LibreOffice`:
         - Tabelle / Zeilen einfügen / Zeilen oberhalb und eine neuen, einfacheren Header einfügen
         - *nr, titel, text, info, start, ziel, auf, ab, hp, grad, km, stunden, einkehr, track*
         - den alten Header der Spalten in Zeile 2 behalten wir, vielleicht können wir ihn noch brauchen ...
     * noch einmal *CSV To JSON* und wieder in einen Array von Objekten konvertieren
     * viel besser jetzt, `const ETAPPEN=` dazu und als [etappen.js](etappen.js) speichern
-    * `STRG+UMSCHALT+P` *beautify*, in `index.html` einbauen und in `main.js` mit `console.log` testen
+    * `STRG+UMSCHALT+P` *beautify*, in *index.html* einbauen und in *main.js* mit `console.log` testen
 
 4. wenn ihr ein Beispiel für einen **schlechten Datensatz** bei `data.gv.at` sucht - mit den **Adlerblicken** habt ihr ihn gefunden
 
     * im .zip-File ein PDF das zu einem anderen Datensatz (GPS-Tracks der Etappen) gehört
     * völlig irrelevante GIS-Layer mit Wald/Wildschutz Shapefiles
     * ein XLSX-File mit dem Versuch, Koordinaten der Standorte der Adlerblicke Fernrohre zu dokumentieren
-    * wer zuviel Zeit hat, kann gerne die verschiedenen Arten der Lat/Lng Angaben analysieren
+    * wer zu viel Zeit hat, kann gerne die verschiedenen Arten der Lat/Lng Angaben analysieren
     * letztes Jahr im Kurs haben wir uns auch schon geärgert und deshalb
     * [https://webmapping19s.github.io/ex/adler/blicke.js](https://webmapping19s.github.io/ex/adler/blicke.js)
     * speichern als [blicke.js](blicke.js)
-    * `STRG+UMSCHALT+P` *beautify*, in `index.html` einbauen und in `main.js` mit `console.log` testen
+    * `STRG+UMSCHALT+P` *beautify*, in *index.html* einbauen und in *main.js* mit `console.log` testen
 
 
 ## B. Adlerblicke als Icons mit Popup einbauen
@@ -51,29 +51,30 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     }
     ```
 
-2. `L.icon` mit einem passenden Piktogramm statt dem Standardmarker
+2. [L.icon](https://leafletjs.com/reference-1.6.0.html#icon) mit einem passenden Piktogramm statt dem Standardmarker
 
     * Google Suche "*Map Icons Collection*" -> [https://mapicons.mapsmarker.com/](https://mapicons.mapsmarker.com/)
 
         - als Icon verwenden wir: *Tourism / Dark / Panoramic View*
         - Rechte Maus und *Save image as* in einem Unterverzeichnis `icons/`
-        - Syntax zum Einbauen beim Marker:
+        - beim Einbauen als `L.icon` müssen wir die Adresse des Icons als [iconUrl](https://leafletjs.com/reference-1.6.0.html#icon-iconurl) angeben:
 
             ```
             icon: L.icon({
                 iconUrl: "icons/panoramicview.png"
             })
             ```
-    * Anfasspunkt testen mit einem zusätzlichen Standardmarker
+
+    * Anfasspunkt testen wir mit einem zusätzlichen Standardmarker
     
         ```
         L.marker([blick.lat, blick.lng]).addTo(map);
         ```
         
         - Standardanfasspunkt bei Icons ist *links oben* - das entspricht `[0, 0]`
-        - Mitte des Bilds wenn die Größe angegeben wird: `iconSize: [32,37]`
-        - beliebig mit `iconAnchor: [16, 37]`
-        - die Popup-Position definiert `popupAnchor: [0, -37]` 
+        - Mitte des Bilds wenn die Größe über [iconSize](https://leafletjs.com/reference-1.6.0.html#icon-iconsize) angegeben wird: z.B. `iconSize: [32,37]`
+        - beliebig mit [iconAnchor](https://leafletjs.com/reference-1.6.0.html#icon-iconanchor): z.B. `iconAnchor: [16, 37]`
+        - die Popup-Position definiert [popupAnchor](https://leafletjs.com/reference-1.6.0.html#icon-popupanchor): z.B. `popupAnchor: [0, -37]` 
 
 3. zum Schluss die Adlerblicke in eine ein/ausschaltbare Overlay-Gruppe bringen
 
@@ -110,7 +111,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 1. zuerst das .zip File aller [Einzeletappen](https://gis.tirol.gv.at/ogd/sport_freizeit/TW_Adlerweg_-_gpx-Daten1.zip) herunterladen und in einem Unterverzeichnis `gpx/` auspacken
 
 
-2. das [GPX plugin for Leaflet](https://github.com/mpetazzoni/leaflet-gpx) von `mpettazoni` über `cdnjs` in `index.html` einbauen
+2. das [GPX plugin for Leaflet](https://github.com/mpetazzoni/leaflet-gpx) von `mpettazoni` über [cdnjs.com](https://cdnjs.com/libraries/leaflet-gpx) in *index.html* einbauen
 
     ```
     https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js
@@ -142,7 +143,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
             }
             ```
 
-    * die Linie ist noch nicht schön genug - über die `polyline_options`des Plugins ändern wir sie in *schwarz / strichliert*
+    * die Linie ist noch nicht schön genug - über die `polyline_options` des Plugins ändern wir sie in *schwarz / strichliert*
 
         ```
         polyline_options: {
@@ -208,12 +209,12 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 2. ein Pulldown Menü erlaubt das wechseln zwischen den Etappen
 
-    * in `index.html` vor dem map-DIV ein HTMLSelect-Element mit der ID `pulldwon` hinzufügen
+    * in *index.html* vor dem map-DIV ein HTMLSelect-Element mit der ID `pulldwon` hinzufügen
         ```
         <select id="pulldown"></select>
         ```
 
-    * in `main.js` das Pulldownmenü mit den Etappen Titeln und Nummern befüllen
+    * in *main.js* das Pulldownmenü mit den Etappen Titeln und Nummern befüllen
 
         ```
         let pulldown = document.querySelector("#pulldown");
@@ -244,7 +245,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 1. das `.innerHTML` beliebiger HTML-Elemente mit Werten aus dem Etappenobjekt ersetzen
 
-    * HTML-Elemente bekommen `id`-Attribute die gleichlauten wie die `keys` im Etappenobjekt
+    * HTML-Elemente bekommen `id`-Attribute die gleich lauten wie die *Keys* im Etappenobjekt
     * damit wir den Überblick über die IDs nicht verlieren, verwenden wir ein Prefix `et-`
     * z.B. `<h2 id="et-titel"></h2>` oder `<p id="et-text"></p>`
     * die Umsetzung erledigt eine einfache `for in`-Schleife
@@ -261,16 +262,16 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         }
         ```
 
-2. in Kombination mit *Font Awesome* und CSS können wir *Badges* (siehe Bootstrap) realisieren
+2. in Kombination mit *Font Awesome* und CSS können wir *Badges* realisieren
 
-    * in `index.html`
+    * in *index.html*
         ```
         <div class="badge">
             <i class="fas fa-walking"></i> <span id="et-km"></span>km
         </div>
         ```
     
-    * in `main.css`
+    * in *main.css*
         ```
         .summary {
             margin-bottom: 2em;
@@ -320,7 +321,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     ];
     ```
 
-* nach dem Einbinden in `index.html` können wir sie visualisieren
+* nach dem Einbinden in *index.html* können wir sie visualisieren
 
 * zuerst definieren wir ein neues Overlay
 
@@ -330,7 +331,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 * dann zeichnen wir in einer eigenen Funktion die Icons
     * mit einer `for of` Schleife loopen wir durch den `EINKEHR`-Array
     * das Icon `restaurant.png` (*Restaurants & Hotels / Dark / Restaurant*) kommt wieder von der [Map Icons Collection](https://mapicons.mapsmarker.com/)
-    * als Tooltip zeigen wir den Namen und die Etappenummer
+    * als Tooltipp zeigen wir den Namen und die Etappennummer
     * die Icons hängen wir an das `einkehr`-Overlay
     * zum Schluss rufen wir unsere Funktion auf und hängen das Overlay an die Karte
 
@@ -369,7 +370,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
     <div id="profile"></div>
     ```
 
-3. Initialisierung und Konfiguration des Profils geschieht dann in `main.js` unterhalb des Codes für die Einkehrmöglichkeiten. Von den unzähligen Konfigurationsmöglichkeiten des Plugins benötigen wir jetzt nur vier:
+3. Initialisierung und Konfiguration des Profils geschieht dann in *main.js* unterhalb des Codes für die Einkehrmöglichkeiten. Von den unzähligen Konfigurationsmöglichkeiten des Plugins benötigen wir jetzt nur vier:
 
     * `theme: "steelblue-theme"`: das Aussehen des Profils wird über CSS *themes* definiert die wir in `leaflet-elevation.css` finden. Das `theme` Attribut kennt standardmäßig folgende Varianten:
         * *lime-theme*, *steelblue-theme*, *purple-theme*, *yellow-theme*, *red-theme*, *magenta-theme*, *lightblue-theme*
@@ -378,7 +379,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
     * `detached: true`: damit landet das Profil außerhalb der Karte im `elevationDiv`
     
-    * `followMarker: false`: parallel zu Mausbewegungen über dem Profil kann man den Kartenauscchnitt gleich mit verschieben - ein Feature das mitunter auch lästig werden kann ...
+    * `followMarker: false`: parallel zu Mausbewegungen über dem Profil kann man den Kartenausschnitt gleich mit verschieben - ein Feature das mitunter auch lästig werden kann ...
 
     ```
     let controlElevation = L.control.elevation({
@@ -390,7 +391,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
 4. damit bleibt noch das Laden der GPX-Datei im `loaded` Callback des `gpx`-Objekts (nach `map.fitBounds`)
 
-    **Anmerkung**: nachdem das `loaded` Callback innerhalb der `drawEtappe`-Funktion liegt, können wir über die `track`-Variable direkt auf das Etapenkürzel zugreifen das wir aus dem Etappenobjekt der jeweiligen Etappennummer ermittelt haben.
+    **Anmerkung**: nachdem das `loaded` Callback innerhalb der `drawEtappe`-Funktion liegt, können wir über die `track`-Variable direkt auf das Etappenkürzel zugreifen das wir aus dem Etappenobjekt der jeweiligen Etappennummer ermittelt haben.
 
     * vor dem Laden müssen wir auch noch ein möglicherweise bereits gezeichnetes Profil löschen
 
@@ -403,10 +404,10 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
     Bei `mouseover` über dem Profil werden Seehöhe und Entfernung angezeigt und ein Marker in der Karte zeigt die Position auf der Profillinie. Durch Selektieren eines Profilbereichs wird auf diesen gezoomt und die Standardattribute Streckenlänge, höchster, tiefster Punkt sowie ein Downloadlink zum GPX sind automatisch unterhalb des Profils sichtbar.    
 
-5. Einziger **Schönheitsfehler**: unser formatierter Profilpfad wir durch eine blaue Linie überdeckt die das Plugin automatisch mitzeichnet. Im Gegensatz zum *leaflet-gpx* Modul bei dem der Stil der Linie über Optionen beim Aufruf definiert wird (siehe `polyline_options`) werden Stile bei *leaflet-elevation* ja über CSS in *Themes* definiert. Deshalb müssen wir etwas umständlich den Stil der Linie in `main.css` direkt überschreiben indem wir:
+5. Einziger **Schönheitsfehler**: unser formatierter Profilpfad wir durch eine blaue Linie überdeckt die das Plugin automatisch mit zeichnet. Im Gegensatz zum *leaflet-gpx* Modul bei dem der Stil der Linie über Optionen beim Aufruf definiert wird (siehe `polyline_options`) werden Stile bei *leaflet-elevation* ja über CSS in *Themes* definiert. Deshalb müssen wir etwas umständlich den Stil der Linie in *main.css* direkt überschreiben indem wir:
 
     * als `theme`-Attribut ein eigenes Theme angeben -> `theme: "adler-theme"`
-    * in `main.css` die Profillinie unseres eigenen Themes auf unsichtbar setzen
+    * in *main.css* die Profillinie unseres eigenen Themes auf unsichtbar setzen
 
         ```
         .adler-theme.elevation-polyline {
@@ -446,7 +447,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
 2. bevor wir die Marker mit einem Popup zeichnen definieren wir ein neues Overlay `overlay.wikipedia` (siehe `overlay.einkehr`)
 
-3. alles was wir jetzt noch machen müssen, ist nach dem Zoomen/Pannen eine passende URL an `secure.geonames.org` zu senden und das JSON-Ergebnis in Marker mit Tooltips umzuwandeln
+3. alles was wir jetzt noch machen müssen, ist nach dem Zoomen/Pannen eine passende URL an `secure.geonames.org` zu senden und das JSON-Ergebnis in Marker mit Tooltipps umzuwandeln
 
     * das Callback für Zoom/Pan Ende sieht so aus
 
@@ -456,11 +457,11 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
         });
         ```
 
-        * bei Event-listenern in Leaflet können wir auch mehrer Events gleichbehandeln indem wir sie durch ein Leerzeichen trennen
+        * bei Event-Listenern in Leaflet können wir auch mehrere Events gleichbehandeln indem wir sie durch ein Leerzeichen trennen
         
-        * beim Hineinzoomen wird `zoomend` und beim Ausschnitt Verschieben `moveend` angesprochen
+        * beim Hineinzoomen wird [zoomend](https://leafletjs.com/reference-1.6.0.html#map-zoomend) und beim Ausschnitt Verschieben [moveend](https://leafletjs.com/reference-1.6.0.html#map-moveend) angesprochen
 
-    * den Ausschnitt ermitteln wir aus `map.getBounds()` - siehe Leaflet Hilfe für alle Möglichkeiten
+    * den Ausschnitt ermitteln wir aus [getBounds](https://leafletjs.com/reference-1.6.0.html#map-getbounds) des `map`-Objekts. In diesem [LatLngBounds](https://leafletjs.com/reference-1.6.0.html#latlngbounds) Objekt bekommen wir die Eckkoordinaten über [getNorth](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getnorth), [getSouth](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getsouth), [getEast](https://leafletjs.com/reference-1.6.0.html#latlngbounds-geteast) und [getWest](https://leafletjs.com/reference-1.6.0.html#latlngbounds-getwest)
 
         ```
         let ext = {
@@ -471,7 +472,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
         }
         ```
 
-    * dann setzen wir mit template-Syntax die URL zusammen
+    * dann setzen wir mit Template-Syntax die URL zusammen
 
         ```
         let url = `http://secure.geonames.org/wikipediaBoundingBoxJSON?lang=de&maxRows=30&north=${ext.north}&south=${ext.south}&east=${ext.east}&west=${ext.west}&username=webmapping`;
@@ -479,10 +480,10 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
     * den Request schicken über die neue Methode `L.Util.jsonp` des `leaflet-ajax` Plugins ([https://github.com/calvinmetcalf/leaflet-ajax](https://github.com/calvinmetcalf/leaflet-ajax)) an die GeoNames Webseite
 
-        * zuvor müssen wir natürlich `leafet.ajax` im `index.html` einbinden
+        * zuvor müssen wir natürlich `leafet.ajax` im *index.html* über den [cdnjs.com](https://cdnjs.com/libraries/leaflet-ajax)-Link einbinden
 
         ```
-        https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
         ```
 
         * dann senden wir den Request an diese Adresse
@@ -523,7 +524,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
         ```
         for (let article of data.geonames) {
-            let mrk = L.marker([article.lat, article.lng]).addto(overlay.wikipedia);
+            let mrk = L.marker([article.lat, article.lng]).addTo(overlay.wikipedia);
             mrk.bindPopup(`
                 <small>${article.feature}</small>
                 <h3>${article.title} (${article.elevation}m)</h3>
@@ -597,7 +598,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
             }
         ```
 
-        Bei `switch` können auch mehrere `case` Klauseln kombiniert werden - z.B. bei den administativen Einheiten
+        Bei `switch` können auch mehrere `case` Klauseln kombiniert werden - z.B. bei den administrativen Einheiten
 
         ```
         case "adm1st":
@@ -623,7 +624,7 @@ Das Plugin unsere Wahl dafür ist [leaflet-elevation](https://github.com/Raruto/
 
 6. **einen Schönheitsfehler gibt es noch ...**
 
-Beim Öffnen der Poppups am oberene Rand der Karte wird oft automatisch der Ausschnitt verschoben und damit eine neue Wikipedia-Abfrage gemacht. Bei dieser Abfrage werden über `overlay.wikipedia.clearLayers()` alle bestehenden Marker gelöscht und damit verschwindet auch unser Tooltip :-(
+Beim Öffnen der Popups am oberen Rand der Karte wird oft automatisch der Ausschnitt verschoben und damit eine neue Wikipedia-Abfrage gemacht. Bei dieser Abfrage werden über `overlay.wikipedia.clearLayers()` alle bestehenden Marker gelöscht und damit verschwindet auch unser Tooltipp :-(
 
 **Lösung**: wir löschen nicht automatisch alle bestehenden Marker sondern merken uns, welche Marker wir schon gezeichnet haben und ergänzen nur die, die wir noch nicht gezeichnet haben. Dabei hilft uns die Position -> wir merken uns einfach lat/lng!
 
