@@ -78,7 +78,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * nach der Formel `Fläche = Radius² * PI` berechnen wir den Radius (`let r`)
     * die Kreise werden sehr groß, deshalb multiplizieren wir die Fläche **vor** der Radiusberechnung mit einem Skalierungsfaktor (`let s=0.5`)
-    * statt `L.marker` verwenden wir `L.circleMarker` und setzen dessen `radius` Attribut auf den berechneten Wert
+    * statt [L.marker](https://leafletjs.com/reference.html#marker) verwenden wir [L.circleMarker](https://leafletjs.com/reference.html#circlemarker) und setzen dessen [radius](https://leafletjs.com/reference.html#circlemarker-radius) Attribut auf den berechneten Wert
 
     ```
     let drawCircles = function () {
@@ -97,7 +97,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 2. die Kreise zeichnen wir in ein eigenes ein-/ausschaltbares Overlay 
     
-    * oberhalb von `L.control.layers` eine neue `L.featureGroup` hinzufügen und an die Karte hängen
+    * oberhalb von [L.control.layers](https://leafletjs.com/reference.html#control-layers) eine neue [L.featureGroup](https://leafletjs.com/reference.html#featuregroup) hinzufügen und an die Karte hängen
 
         ```
         let circleGroup = L.featureGroup().addTo(map);
@@ -113,7 +113,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         }).addTo(map);
         ```
 
-    * beim `L.circleMarker` die Kreise ans Overlay hängen
+    * bei `L.circleMarker` die Kreise ans Overlay hängen
 
         ```
         let circle = L.circleMarker([lat, lng], {
@@ -171,9 +171,9 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     ```
     <select id="pulldown">
-        <option value="confirmed" selected>bestätigte Fälle</span>
-        <option value="deaths">Verstorbene</span>
-        <option value="recovered">Genesene</span>
+        <option value="confirmed" selected>bestätigte Fälle</option>
+        <option value="deaths">Verstorbene</option>
+        <option value="recovered">Genesene</option>
     </select>
     ```
 
@@ -223,7 +223,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
         }
         ```
 
-    * dann müssen wir nur noch die bestehenden Kreise vor dem Neuzeichnen löschen. Nachdem unsere Kreise immer in die `circleGroup` gezeichnet werden ist das nach der `if`-Abfrage einfach zu lösen
+    * dann müssen wir nur noch die bestehenden Kreise vor dem Neuzeichnen mit [clearLayers](https://leafletjs.com/reference.html#layergroup-clearlayers) löschen. Nachdem unsere Kreise immer in die `circleGroup` gezeichnet werden ist das nach der `if`-Abfrage einfach zu lösen
 
         ```
         circleGroup.clearLayers();
