@@ -53,9 +53,9 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     * jeden Datensatz merken wir uns in einer Variablen `row`
     * als Popup verwenden wir die administrativen Einheiten (`let reg`) im ersten und zweiten Eintrag von `row` mit den Indizes `0` und `1`
     * die Koordinaten für den Marker finden wir als dritten und vierten Eintrag von `row` mit den Indizes `2` (`let lat`) und `3`  (`let lng`)
-    * der Wert des *jüngste Datensatzs* steht an der letzten Stelle des `row`-Arrays und kann über `row.length - 1` angesprochen werden (`let val`)
+    * der Wert des *jüngste Datensatzes* steht an der letzten Stelle des `row`-Arrays und kann über `row.length - 1` angesprochen werden (`let val`)
 
-3. der komplette Code unsere `drawMarker`-Funktion,  die wir ganz zum Schluß natürlich aufrufen müssen um die Marker auch wirklich zu zeichnen, sieht damit so aus:
+3. der komplette Code unsere `drawMarker`-Funktion,  die wir ganz zum Schluss natürlich aufrufen müssen um die Marker auch wirklich zu zeichnen, sieht damit so aus:
 
     ```
     let drawMarker = function () {
@@ -135,7 +135,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         let index = CONFIRMED[0].length - 1;
         ```
 
-    * zusätzlich merken wir uns den Header mit den Zeitstempelen im ersten Datensatz von `CONFIRMED` gleich mit - der Header ist bei allen Themen gleich, also nehmen wir einfach einen davon
+    * zusätzlich merken wir uns den Header mit den Zeitstempeln im ersten Datensatz von `CONFIRMED` gleich mit - der Header ist bei allen Themen gleich, also nehmen wir einfach einen davon
 
         ```
         let header = CONFIRMED[0];
@@ -152,14 +152,14 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
 2. in *main.js* mit `document.querySelector` eine Referenz auf diesen Span erzeugen und dessen Inhalt setzen
 
-    * das Datum finden wir im Header beim Index des aktuellen datensatzes -> `header[index]`
+    * das Datum finden wir im Header beim Index des aktuellen Datensatzes -> `header[index]`
     * das Thema setzen wir unterhalb von `let header` vorerst fix auf "*bestätigte Fälle*"
 
         ```
         let topic = "bestätigte Fälle";
         ```
 
-    * mit Template-Syntax setzen wir unterhalb der `for`-Schleife das `.innerHTML` unsers Spans
+    * mit Template-Syntax setzen wir unterhalb der `for`-Schleife das `.innerHTML` unseres Spans
 
         ```
         document.querySelector("#datum").innerHTML = `am ${header[index]} - ${topic}`;
@@ -179,7 +179,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     `selected` bestimmt, welcher Wert voreingestellt werden soll
 
-2. in *main.js* auf Änderungen im Auswahlmenu reagieren - dazu verwenden wir einen `onchange` Eventhandler auf unser Pulldown mit der ID `pulldown`
+2. in *main.js* auf Änderungen im Auswahlmenü reagieren - dazu verwenden wir einen `onchange` Eventhandler auf unser Pulldown mit der ID `pulldown`
 
     * oberhalb von `drawCircles();` fügen wir diesen Codeblock ein
 
@@ -211,7 +211,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * `label` ersetzt unseren hard-gecodeten `topic`
 
-    * `value` erlaubt uns vor der `for`-Schleife den Datensatz in einer `if`-Abfrage ensprechend zu setzen
+    * `value` erlaubt uns vor der `for`-Schleife den Datensatz in einer `if`-Abfrage entsprechend zu setzen
 
         ```
         if (value === "confirmed") {
@@ -261,7 +261,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
     slider.value = slider.max;
     ```
 
-4. auf Änderungen im Auswahlmenu reagieren wir wieder in einem `onchange`-Event-Listener den wir direkt unter den Code der Initialisierung schreiben
+4. auf Änderungen im Auswahlmenü reagieren wir wieder in einem `onchange`-Event-Listener den wir direkt unter den Code der Initialisierung schreiben
 
     ```
     slider.onchange = function() {
