@@ -5,7 +5,7 @@ let map = L.map("map", {
         mapdiv.dataset.lat,
         mapdiv.dataset.lng
     ],
-    zoom: 17,
+    zoom: 13,
     layers: [
         L.tileLayer.provider("OpenTopoMap")
     ]
