@@ -35,6 +35,7 @@ Alle drei Bestandteile müssen positiv absolviert werden.
 * [Beispiele](https://webmapping.github.io/examples)
 * [Linksammlung](https://webmapping.github.io/links)
 * [Workload](https://webmapping.github.io/workload)
+* [Projekte](https://webmapping.github.io/projekte)
 * [OLAT-Kurs](https://lms.uibk.ac.at/url/RepositoryEntry/4630904871)
 * [https://github.com/webmapping](https://github.com/webmapping)
 * [https://webmapping.github.io](https://webmapping.github.io)
