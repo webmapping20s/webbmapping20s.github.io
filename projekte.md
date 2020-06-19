@@ -18,14 +18,13 @@ In der abschließenden Gruppenarbeit für den Web mapping Kurs sollt ihr die im 
 
 ## Teams
 
-* Team 1: David Reisenauer, Johannes Melchert, Pia Feiel
-* Team 2: Elsa Ventruba, Johanna Roll, Lukas Endres
-* Team 3: Jacqueline Kowalski, Jakob Fink, Marco Hilpert
-* Team 4: Darina Chebanova, Lukas Müller, Richard Kempert
-* Team 5: Alexandra Buck, Laura Brandstetter, Leon Bührle
-* Team 6: Ayhan Kosan, Ingomar Glatz, Peter Stampfl
+* [VeloVienna](https://velovienna.github.io/): David Reisenauer, Johannes Melchert, Pia Feiel
+* [Little Green Friends](https://littlegreenfriends.github.io/): Elsa Ventruba, Johanna Roll, Lukas Endres
+* [Der Nationalpark Hohe Tauern](https://tauernhoch.github.io/): Jacqueline Kowalski, Jakob Fink, Marco Hilpert
+* [Check Your Sporty Range](https://sportyrange.github.io/): Darina Chebanova, Lukas Müller, Richard Kempert
+* [Mountain Moments](https://ibkdrei.github.io/): Alexandra Buck, Laura Brandstetter, Leon Bührle
+* [Rafting Tirol](https://outdooractiv.github.io/): Ayhan Kosan, Peter Stampfl
 
-Die Teamkommunikation könnte ihr über OLAT oder [https://easyconference.uibk.ac.at](https://easyconference.uibk.ac.at) abwicklen
 
 ## Deadlines
 
