@@ -1,20 +1,20 @@
 # Arbeitsbeispiele
 
-### [Neuseelandreise Einzeletappe](https://webmapping.github.io/nz/index.html) - [Route](https://webmapping.github.io/nz/route.html) - [HOWTO](nz/howto)
+### [Neuseelandreise Einzeletappe](https://webmapping20s.github.io/nz/index.html) - [Route](https://webmapping20s.github.io/nz/route.html) - [HOWTO](nz/howto)
 
 HTML Seitenstruktur mit *head*, *body*, *header*, *main*, *div*, *footer*, *nav*; Überschriften, Links, Abbildungen mit *figure*, *img* und *figcaption*; public-domain Bilder von pixabay.com und wikimedia; Bildbearbeitung mit GIMP; Styling mit CSS in *main.css*, Responsive Design mit *max-width* und *@media* Regeln; Webfonts mit Google Fonts; Icons mit Font Awesome; *defer-Attribut* für das zentrale Javascript *main.js*; erste Leafletkarte mit *L.map* und einem Hintergrundlayer (*L.tileLayer*) aus *leaflet-providers*; Auslesen von *data-Attributen* des Karten-DIVS über *document.querySelector* zur Positionierung eines Markers mit *L.marker*; *template-Syntax* mit \`Backticks\` bei *.bindPopup*
 
-### [COVID-19 Weltkarte](https://webmapping.github.io/world/index.html) - [HOWTO](world/howto)
+### [COVID-19 Weltkarte](https://webmapping20s.github.io/world/index.html) - [HOWTO](world/howto)
 
 Umwandeln von CSV-Daten in JSON Arrays bei convertcsv.com; *if, else if, else Abfrage* zur Bestimmung der Datensätze *const CONFIRMED, DEATHS, RECOVERED* sowie der Kreisfarbe; Sortierung der verschachtelten Datenarrays nach Wert absteigend; *for-Schleife* zum Abarbeiten der Datenarrays; flächenproportionale *L.circleMarker* in eine eigene *L.featureGroup* zeichnen; *L.control.layers* für Hintergrundlayer und Overlay ein-, ausschaltbar; Interaktion zwischen Javascript und HTML; Titel der Karte als *span-Element* setzen; Themenauswahl über Puldownmenü mit *select*, *option* und dem Attribut *selected*; Slider für verschiedene Zeitpunkte der Daten mit *input type="range"* und den Attributen *min*, *max*, *step*, *value*; *.onchange-Callbacks* zum Neuzeichnen nach Themen- und Zeitpunktwechsel; Animation aller verfügbaren Zeitpunkt *.onclick* auf einen Button (*input type="button"*) mit *.setInterval* und *.clearInterval* mit Pauseoption.
 
-### [Wien Open Government Data](https://webmapping.github.io/wien/index.html) - [HOWTO](wien/howto)
+### [Wien Open Government Data](https://webmapping20s.github.io/wien/index.html) - [HOWTO](wien/howto)
 
 GeoJSON Punkte, Linien und Flächen zeichnen; Daten asynchron mit *leaflet-ajax* Plugin über *L.geoJson.ajax* laden; *pointToLayer* Funktion für Marker mit *L.icon*; *style* Funktion für Farben von Linien und Flächen; *onEachFeature* Funktion für Popups aus *feature.properties* Attributen; *map.fitBounds* in Kombination mit *.getBounds()* im *data:loaded* Callback zum Setzen des Kartenausschnitts nach dem Zeichnen der Marker; Zusammenfassen von Markern über das *leaflet-markercluster* Plugin und *L.markerClusterGroup*; Popups mit Bildern aus *feature.properties* Attributen; strichlierte und punktierte Linien mit *dashArray*
 
-### [Wetterstationen Tirol](https://webmapping.github.io/aws-tirol/index.html) - [HOWTO](aws-tirol/howto)
+### [Wetterstationen Tirol](https://webmapping20s.github.io/aws-tirol/index.html) - [HOWTO](aws-tirol/howto)
 
 *L.geoJson.ajax* mit *.getGeoJSON()* in *data:loaded* zum Zeichnen mehrerer Layer verwenden; *filter* Funktion für geoJSON-Objekte; den logischen Operator *\|\|* verwenden (z.B *feature.properties.WG \|\| "-"* bei missing values in Popups); *.toFixed(5)* für Kontrolle der Nachkommastellen bei Zahlen wie Lat/Lng; Marker als Texte über *L.divIcon* mit Styling in CSS; Schrift freistellen mit CSS *text-shadow*; Elemente rotieren über CSS *transform(30deg)*; Farbpaletten über *Elemente untersuchen* im Browser von bestehenden Kartenapplikationen extrahieren; Farben nach Wert und Schwellen aus Farbpaletten zuweisen; *Leaflet.Rainviewer* Plugin verwenden; *^* (Zeilenanfang) und *$* (Zeilenende) bei Suchen/Ersetzen in Visual Studio Code (i.e. *reguläre Ausdrücke*), *L.control.rainviewer* Plugin
 
-### [Adlerweg Tirol](https://webmapping.github.io/adlerweg/index.html) - [HOWTO](adlerweg/howto)
+### [Adlerweg Tirol](https://webmapping20s.github.io/adlerweg/index.html) - [HOWTO](adlerweg/howto)
 Javascript-Objekte als Datengrundlage; Map Icons Collection; *L.icon()* mit *iconUrl* und Positionierung über *iconSize*, *iconAnchor*, *iconPopup*; *leaflet-gpx* Plugin von `mpettazoni`; *leaflet-elevation* Plugin von `Raruto`; HTML-Elemente mit *.querySelector* und *.innerHTML* durch Werte aus dem Skript ersetzen; Navigations-Pulldownmenü aus einem Javascript-Objekt dynamisch erstellen; *map.on("zoomend moveend")*; Javascript: Schleifen mit *for of* (Arrays) und *for in* (Objekte); *String.replace("a","b")* und *String.replace(/a/g,"b")* (i.e. reguläre Ausdrücke / global); *switch*-Statement; *geonames.org* Webservices; *document.location.search*

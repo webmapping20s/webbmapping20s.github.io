@@ -32,10 +32,10 @@ Alle drei Bestandteile müssen positiv absolviert werden.
 * Kommunikation über die @uibk.ac.at Adresse
 
 ### Links
-* [Beispiele](https://webmapping.github.io/examples)
-* [Linksammlung](https://webmapping.github.io/links)
-* [Workload](https://webmapping.github.io/workload)
-* [Projekte](https://webmapping.github.io/projekte)
+* [Beispiele](https://webmapping20s.github.io/examples)
+* [Linksammlung](https://webmapping20s.github.io/links)
+* [Workload](https://webmapping20s.github.io/workload)
+* [Projekte](https://webmapping20s.github.io/projekte)
 * [OLAT-Kurs](https://lms.uibk.ac.at/url/RepositoryEntry/4630904871)
 * [https://github.com/webmapping](https://github.com/webmapping)
 * [https://webmapping.github.io](https://webmapping.github.io)
