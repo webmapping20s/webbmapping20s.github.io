@@ -4,7 +4,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 Dieses Template enthält als Hintergrundlayer für die Grundkarte die frei verfügbaren WMTS-Layer von [basemap.at](https://basemap.at/), die über das [leaflet-providers](https://github.com/leaflet-extras/leaflet-providers) Plugin eingebunden werden. Die Kombination von Orthofoto mit Beschriftung wird über [L.layerGroup](https://leafletjs.com/reference.html#layergroup) implementiert
 
-```
+```javascript
 let startLayer = L.tileLayer.provider("BasemapAT.grau");
 L.control.layers({
     "BasemapAT.grau": startLayer,
@@ -33,7 +33,7 @@ L.control.layers({
 
 5. STRG+UMSCHALT+P und *Beautify file* in Visual Studio Code zeigt die Struktur von GeoJSON noch besser - das auf einen Eintrag reduzierte GeoJSON File sieht dann so aus:
 
-    ```
+    ```javascript
     const SPAZIERGANG = {
         "type": "FeatureCollection",
         "totalFeatures": 126,
@@ -68,20 +68,20 @@ L.control.layers({
 
     * das erste Feature des Datensatzes:
 
-        ```
+        ```javascript
         let point = SPAZIERGANG.features[0]
         ```
 
     * die Koordinaten dieses Punkts
 
-        ```
+        ```javascript
         point.geometry.coordinates[0] // lng
         point.geometry.coordinates[1] // lat
         ```
     
     * Attribute dieses Punkts
 
-        ```
+        ```javascript
         point.properties.NAME           // der Name des Stopps
         point.properties.BEMERKUNG      // die Info zum Stopps
         point.properties.ADRESSE        // die Adresse des Stopps
@@ -95,13 +95,13 @@ L.control.layers({
 
 1. zuerst binden wir das Skript mit unserem GeoJSON-Objekt in *index.html* ein
 
-    ```
+    ```html
     <script src="SPAZIERPUNKTOGD.js"></script>
     ```
 
 2. Zur Anzeige der GeoJSON-Daten als einfache Marker verwenden wir Leaflets [L.geoJson](https://leafletjs.com/reference.html#geojson) Methode der wir als ersten Parameter unser GeoJSON-Objekt in der Variablen `SPAZIERGANG` übergeben
 
-    ```
+    ```javascript
     let sights = L.geoJson(SPAZIERGANG).addTo(map);
     ```
 
@@ -110,7 +110,7 @@ L.control.layers({
 
 3. das Popup können wir im Options-Objekt von *L.geoJson* über die Funktion [pointToLayer](https://leafletjs.com/reference.html#geojson-pointtolayer) implementieren. Als Argumente werden an *pointToLayer* automatisch das GeoJSON Feature selbst mit seinen `geometry` und `properties` Objekten sowie zusätzlich die Position in Lat/Lng übergeben. Sobald wir *pointToLayer* verwenden, erwartet *L.geoJson*, dass wir einen Marker mit `return` zurückliefern. Tun wir das nicht, wird unser Marker auch nicht mehr angezeigt. Das Popup definieren wir aus den `properties` mit Template-Syntax.
 
-    ```
+    ```javascript
     let sights = L.geoJson(SPAZIERGANG, {
         pointToLayer: function (point, latlng) {
             let marker = L.marker(latlng);
@@ -138,7 +138,7 @@ Möchten wir statt der Standardmarker ein eigenes Icon verwenden, können wir da
 
 2. Icon-Link und Größe definieren wir mit `L.icon` in den Attributen [iconUrl](https://leafletjs.com/reference.html#icon-iconurl) und [iconSize](https://leafletjs.com/reference.html#icon-iconsize)
 
-    ```
+    ```javascript
     let siteIcon = L.icon({
         iconUrl: "icons/sight.svg",
         iconSize: [32, 32]
@@ -147,7 +147,7 @@ Möchten wir statt der Standardmarker ein eigenes Icon verwenden, können wir da
 
 3. beim Marker verwenden wir unser neues Icon über das gleichnamige Attribut `icon`
 
-    ```
+    ```javascript
     let marker = L.marker(latlng, {
         icon: siteIcon
     });
@@ -161,19 +161,19 @@ Den Zwischenschritt der Umwandlung der GeoJSON-Daten in gültiges Javascript üb
 
 2. wir binden es über [cdnjs.com](https://cdnjs.com/libraries/leaflet-ajax) in *index.html* ein
 
-    ```
+    ```javascript
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
     ```
 
 3. definieren die URL des GeoJSON-Files als Variable `sightUrl`
 
-    ```
+    ```javascript
     let sightUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD&srsName=EPSG:4326&outputFormat=json";
     ```
 
 4. und ersetzen `L.geoJson` mit `L.geoJson.ajax`. Statt der Konstanten `SPAZIERGANG` verwenden wir die `sightUrl` als ersten Parameter, der Rest bleibt gleich
 
-    ```
+    ```javascript
     let sights = L.geoJson.ajax(sightUrl, {
         // ...
     }).addTo(map)
@@ -186,13 +186,13 @@ Möchten wir die Icons in ein eigenes Overlay schreiben das wir in der Layernavi
 
 1. wir definieren direkt oberhalb von [L.control.layers](https://leafletjs.com/reference.html#control-layers) eine neue [L.featureGroup](https://leafletjs.com/reference.html#featuregroup) und hängen sie an die Karte
     
-    ```
+    ```javascript
     let sightGroup = L.featureGroup().addTo(map);
     ```
 
 2. in *L.control.layers* können wir neben den Hintergrundlayern auch Overlays als zweites Objekt einbauen. Der *Key* des Objekts wird der Label des Eintrags und der *Value* ist die Feature Group die wir ein- und ausschalten möchten
 
-    ```
+    ```javascript
     L.control.layers({
         // baselayers
     },{
@@ -201,7 +201,8 @@ Möchten wir die Icons in ein eigenes Overlay schreiben das wir in der Layernavi
     ```
 
 3. bleibt noch, unsere Icons statt in die Karte `map` in die Feature Group  `sightGroup` zu schreiben
-    ```
+
+    ```javascript
     let sights = L.geoJson.ajax(sightUrl, {
         // ....
     }).addTo(sightGroup)
@@ -211,7 +212,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
 4. wenn alle Icons gezeichnet sind, setzen wir in der `data:loaded` Callback-Funktion des `sights`-Objekts den Ausschnitt der Karte mit [fitBounds](https://leafletjs.com/reference.html#map-fitbounds) auf die Ausdehnung unserer Icons die wir über [getBounds](https://leafletjs.com/reference.html#map-getbounds) abfragen können
  
-    ```
+    ```javascript
     sights.on("data:loaded", function() {
         map.fitBounds(sightGroup.getBounds());
     });
@@ -222,7 +223,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
 1. der JSON Datensatz dafür heißt [Stadtwanderwege und RundumadumWanderweg Wien](https://www.data.gv.at/katalog/dataset/36886c25-6961-4055-96b2-b3e8b138e588), die GeoJSON-Daten sind unter [WFS GetFeature (JSON) - Wanderwege](https://www.data.gv.at/katalog/dataset/stadt-wien_stadtwanderwegeundrundumadumwanderwegwien/resource/48729125-9b38-49fe-8766-b390a48b3c0a) zu finden - die URL zum Laden lautet:
 
-    ```
+    ```javascript
     let walkUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WANDERWEGEOGD&srsName=EPSG:4326&outputFormat=json";
     ```
 
@@ -232,7 +233,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
     * das Muster der Linie definieren wir über [dashArray](https://leafletjs.com/reference.html#path-dasharray)
     * eine `if`-Abfrage entscheidet in Abhängigkeit des Typs, welcher Stil zurückgeliefert wird
 
-    ```
+    ```javascript
     L.geoJson.ajax(walkUrl, {
         style: function (feature) {
             if (feature.properties.TYP == "1") {
@@ -256,7 +257,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
 3. Tooltips für die Wanderwege implementieren wir in der [onEachFeature](https://leafletjs.com/reference.html#geojson-oneachfeature) Funktion von *L.geoJson*. Ihr wird automatisch das jeweilige GeoJSON Feature, sowie der dafür erzeugte Leaflet-Layer übergeben. An diesen Layer können wir unser Popup mit der Bezeichnung des Wanderwegs hängen
 
-    ```
+    ```javascript
     L.geoJson.ajax(walkUrl, {
         style : function (feature) {
             // ...
@@ -271,13 +272,13 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
     * vor *L.control.layers*
 
-        ```
+        ```javascript
         let walkGroup = L.featureGroup().addTo(map);
         ```
 
     * bei *L.control.layers*
 
-        ```
+        ```javascript
         L.control.layers({
             // baselayers
         },{
@@ -287,7 +288,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
     * bei *L.geoJson.ajax*
 
-        ```
+        ```javascript
         L.geoJson.ajax(walkUrl, {
             // ...
         }).addTo(walkGroup)
@@ -297,13 +298,13 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
 1. der JSON Datensatz dafür heißt [Weltkulturerbe Wien](https://www.data.gv.at/katalog/dataset/12426052-8803-4deb-8c89-9e78785f7dd2), die GeoJSON-Daten sind unter [WFS GetFeature (JSON) - Wanderwege](https://www.data.gv.at/katalog/dataset/stadt-wien_weltkulturerbewien/resource/270f33dd-23dd-4f0d-a200-9f27766aa3fb) zu finden - die URL zum Laden lautet:
 
-    ```
+    ```javascript
     let heritageUrl = "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WELTKULTERBEOGD&srsName=EPSG:4326&outputFormat=json";
     ```
 
 2. die Visualisierung der Flächen erfolgt wie bei den Linien über die Funktion [style](https://leafletjs.com/reference.html#geojson-style) von *L.geoJson*. Diesmal wollen wir zwischen Kernzonen (Rot transparent) und Pufferzonen (Gelb transparent) unterscheiden.
 
-    ```
+    ```javascript
     L.geoJson.ajax(heritageUrl, {
         style: function (feature) {
             if (feature.properties.TYP === "1") {
@@ -323,7 +324,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
 3. Tooltips für die Zonen implementieren wir wieder in der [onEachFeature](https://leafletjs.com/reference.html#geojson-oneachfeature) Funktion von *L.geoJson*. 
 
-    ```
+    ```javascript
     onEachFeature: function (feature, layer) {
         layer.bindPopup(`
             <h3>${feature.properties.NAME}</h3>
@@ -336,13 +337,13 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
     * vor *L.control.layers*
 
-        ```
+        ```javascript
         let heritageGroup = L.featureGroup().addTo(map);
         ```
 
     * bei *L.control.layers*
 
-        ```
+        ```javascript
         L.control.layers({
             // baselayers
         },{
@@ -352,7 +353,7 @@ Damit können die Icons in der Layer control rechts oben ein- und ausgeschaltet 
 
     * bei *L.geoJson.ajax*
 
-        ```
+        ```javascript
         L.geoJson.ajax(heritageUrl, {
             // ..
         }).addTo(heritageGroup)
@@ -366,7 +367,7 @@ Die vielen Icons für Sehenswürdigkeiten machen die Karte schwer lesbar. Deshal
 
 1. zuerst binden wir das Plugin mit seinen Javascript und CSS files über [cdnjs.com](https://cdnjs.com/libraries/leaflet.markercluster) in *index.html* ein
 
-    ```
+    ```html
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
@@ -374,7 +375,7 @@ Die vielen Icons für Sehenswürdigkeiten machen die Karte schwer lesbar. Deshal
 
 2. dann definieren wir `sightGroup` als `L.markerClusterGroup`
 
-    ```
+    ```javascript
     let sightGroup = L.markerClusterGroup().addTo(map);
     ```
 
@@ -382,7 +383,7 @@ Die vielen Icons für Sehenswürdigkeiten machen die Karte schwer lesbar. Deshal
 
 4. sobald dann alle Marker gezeichnet sind, können wir die Markercluster Gruppe an die Karte hängen und den Ausschnitt setzen. Das Callback `data:loaded` unseres GeoJSON Objekts `sights` ermöglicht das - wir fügen dort mit [addLayer](https://leafletjs.com/reference.html#layergroup-addlayer) unsere Icons dem Overlay hinzu
 
-    ```
+    ```javascript
     sights.on("data:loaded", function() {
         sightGroup.addLayer(sights);
         map.fitBounds(sightGroup.getBounds());
