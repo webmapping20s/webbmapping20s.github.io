@@ -23,7 +23,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     * diese Daten kopieren wir in einen neuen [data.js](data.js)-File
     * und fügen eine Variablendeklaration mit `const` dazu - `data.js` sieht nach Konvertierung der drei CSV-Files dann so aus:
 
-        ```
+        ```javascript
         const CONFIRMED=,// konvertierter Inhalt von confirmed
         const DEATHS=,// konvertierter Inhalt von deaths
         const RECOVERED=// konvertierter Inhalt von recovered
@@ -33,12 +33,12 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     
     * wir binden [data.js](data.js) als Skript in `index.html` ein. In welcher Reihenfolge wird `data.js` einbinden ist egal, denn über das `defer`-Attribut beim  `main.js` ist sichergestellt, dass alle Daten geladen sind bevor wir die Karte zeichnen
 
-        ```
+        ```html
         <script src="data.js"></script>
         ```
 
     * und testen sie mit `console.log` in `main.js`
-        ```
+        ```javascript
         console.log(CONFIRMED);
         console.log(DEATHS);
         console.log(RECOVERED);
@@ -57,7 +57,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 3. der komplette Code unsere `drawMarker`-Funktion,  die wir ganz zum Schluss natürlich aufrufen müssen um die Marker auch wirklich zu zeichnen, sieht damit so aus:
 
-    ```
+    ```javascript
     let drawMarker = function () {
         for (let i = 1; i < CONFIRMED.length; i++) {
             let row = CONFIRMED[i];
@@ -80,7 +80,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     * die Kreise werden sehr groß, deshalb multiplizieren wir die Fläche **vor** der Radiusberechnung mit einem Skalierungsfaktor (`let s=0.5`)
     * statt [L.marker](https://leafletjs.com/reference.html#marker) verwenden wir [L.circleMarker](https://leafletjs.com/reference.html#circlemarker) und setzen dessen [radius](https://leafletjs.com/reference.html#circlemarker-radius) Attribut auf den berechneten Wert
 
-    ```
+    ```javascript
     let drawCircles = function () {
         for (let i = 1; i < CONFIRMED.length; i++) {
             // reg, lat, lng, val definieren ...
@@ -99,13 +99,13 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     
     * oberhalb von [L.control.layers](https://leafletjs.com/reference.html#control-layers) eine neue [L.featureGroup](https://leafletjs.com/reference.html#featuregroup) hinzufügen und an die Karte hängen
 
-        ```
+        ```javascript
         let circleGroup = L.featureGroup().addTo(map);
         ```
 
     * in `L.control.layers` das neue Overlay einbauen
 
-        ```
+        ```javascript
         L.control.layers({
             // baselayers
         }, {
@@ -115,7 +115,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * bei `L.circleMarker` die Kreise ans Overlay hängen
 
-        ```
+        ```javascript
         let circle = L.circleMarker([lat, lng], {
             radius: r
         }).addTo(circleGroup);
@@ -130,14 +130,14 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * um später alle drei Themen und die Daten zu allen Zeitpunkten visualisieren zu können ist es besser, diese Informationen in Variablen festzuhalten, die wir dann leicht an einer einzigen Stelle ändern können. Deshalb führen wir am Beginn der `drawCircles` Funktion zwei neue Variablen ein - eine bestimmt das Thema (`let data`), die zweite den Index des Datenwerts (`let index`) den wir anzeigen wollen - wir nehmen dazu den Index des letzte Elements des ersten Datensatzes
 
-        ```
+        ```javascript
         let data = CONFIRMED;
         let index = CONFIRMED[0].length - 1;
         ```
 
     * zusätzlich merken wir uns den Header mit den Zeitstempeln im ersten Datensatz von `CONFIRMED` gleich mit - der Header ist bei allen Themen gleich, also nehmen wir einfach einen davon
 
-        ```
+        ```javascript
         let header = CONFIRMED[0];
         ```
 
@@ -155,13 +155,13 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
     * das Datum finden wir im Header beim Index des aktuellen Datensatzes -> `header[index]`
     * das Thema setzen wir unterhalb von `let header` vorerst fix auf "*bestätigte Fälle*"
 
-        ```
+        ```javascript
         let topic = "bestätigte Fälle";
         ```
 
     * mit Template-Syntax setzen wir unterhalb der `for`-Schleife das `.innerHTML` unseres Spans
 
-        ```
+        ```javascript
         document.querySelector("#datum").innerHTML = `am ${header[index]} - ${topic}`;
         ```
 
@@ -169,7 +169,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
 1. im *index.html* unterhalb der Karte ein `select`-Element mit der ID `pulldown` einfügen - siehe auch [MDN \<select\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
 
-    ```
+    ```html
     <select id="pulldown">
         <option value="confirmed" selected>bestätigte Fälle</option>
         <option value="deaths">Verstorbene</option>
@@ -183,7 +183,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * oberhalb von `drawCircles();` fügen wir diesen Codeblock ein
 
-        ```
+        ```javascript
         document.querySelector("#pulldown").onchange = function() {
             drawCircles();
         }
@@ -195,7 +195,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * in `drawCircles` speichern wir zuerst eine Referenz auf die Optionen des Pulldowns
     
-        ```
+        ```javascript
         let options = document.querySelector("#pulldown").options;
         ```
 
@@ -204,7 +204,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
     
     * über `.value` und `.text` des selektierten Eintrags (i.e. `options[options.selectedIndex]`) können wir auf den Wert (*confirmed*, *deaths* oder *recovered*) und den Label des Eintrags (*bestätigte Fälle*, *Verstorbene* oder *Genesene*) zugreifen
 
-        ```
+        ```javascript
         let value = options[options.selectedIndex].value;
         let label = options[options.selectedIndex].text;
         ```
@@ -213,7 +213,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * `value` erlaubt uns vor der `for`-Schleife den Datensatz in einer `if`-Abfrage entsprechend zu setzen
 
-        ```
+        ```javascript
         if (value === "confirmed") {
             data = CONFIRMED;
         } else if (value === "deaths") {
@@ -225,19 +225,19 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * dann müssen wir nur noch die bestehenden Kreise vor dem Neuzeichnen mit [clearLayers](https://leafletjs.com/reference.html#layergroup-clearlayers) löschen. Nachdem unsere Kreise immer in die `circleGroup` gezeichnet werden ist das nach der `if`-Abfrage einfach zu lösen
 
-        ```
+        ```javascript
         circleGroup.clearLayers();
         ```
 
 ## F. die Daten zu verschiedenen Zeitpunkten visualisieren
 
 1. im *index.html* vor dem Auswahlmenü fügen wir einen Slider mit der ID `slider` hinzu - siehe auch [MDN \<input type="range"\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
-    ```
+    ```html
     <input id="slider" type="range">
     ```
 
 2. in *main.css* machen wir den Slider länger
-    ```
+    ```css
     #slider {
         width: 80%;
     }
@@ -253,7 +253,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
     * als voreingestellten Wert (`value`) verwenden schließlich den letzten, sprich neuesten Datensatz - das ist also `slider.max`
 
-    ```
+    ```javascript
     let slider = document.querySelector("#slider");
     slider.min = 4;
     slider.max = CONFIRMED[0].length - 1;
@@ -263,14 +263,14 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
 4. auf Änderungen im Auswahlmenü reagieren wir wieder in einem `onchange`-Event-Listener den wir direkt unter den Code der Initialisierung schreiben
 
-    ```
+    ```javascript
     slider.onchange = function() {
         drawCircles();
     };
     ```
 
 5. in `drawCircles` müssen wir dann nur mehr den aktuellen Wert des Sliders berücksichtigen indem wir `index` entsprechend setzen
-    ```
+    ```javascript
     let index = document.querySelector("#slider").value;
     ```
 
@@ -281,7 +281,7 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
 Unterschiedliche Farben bei den Kreisen nach Thema lassen sich in der `if`-Abfrage bei `L.circleMarker` definieren. Wir verwenden dabei Farben von [https://clrs.cc/](https://clrs.cc/)
 
-    ```
+    ```javascript
     let color;
     if (value === "confirmed") {
         data = CONFIRMED;
@@ -302,7 +302,7 @@ Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterha
 
 * direkt vor der `for`-Schleife sortieren wir `data` mit Hilfe einer Sortierfunktion - siehe [MDN Array.prototype.sort()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 
-    ```
+    ```javascript
     data.sort(function compareNumbers(row1, row2) {
         //console.log(index, row1[index], row2[index])
         return row2[index] - row1[index];
@@ -324,13 +324,13 @@ Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterha
 
 1. Wir starten und pausieren die Animation mit einem HTML `input`-Element vom Typ `button` den wir in *index.html* nach dem Pulldownmenü einfügen. Als Label für den Button verwenden wir ein passendes Symbol von [https://en.wikipedia.org/wiki/Media_control_symbols](https://en.wikipedia.org/wiki/Media_control_symbols)
 
-    ```
+    ```html
     <input id="play" type="button" value="▶">
     ```
 
 2. in *main.js* (ab jetzt) speichern wir eine Referenz auf den Button und reagieren mit einem `onclick` Event-Listener auf Klicks auf den Button. In dieser Funktion ermitteln wir zuerst den aktuellen Wert des Sliders und setzen ihn auf den ersten Datensatz, wenn wir schon beim letzten Datensatz sind. Unsere Animation wird damit entweder am Anfang oder der aktuellen Position gestartet.
 
-    ```
+    ```javascript
     let playButton = document.querySelector("#play");
     playButton.onclick = function () {
         let value;
@@ -346,7 +346,7 @@ Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterha
 
     Der Code zum Animieren der Kreisgrößen sieht in seiner ersten Version so aus:
 
-    ```
+    ```javascript
     let runningAnimation = null;
 
     playButton.onclick = function () {
@@ -380,7 +380,7 @@ Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterha
     Die Implementierung der Pause-Taste erfolgt in einer `if`-Abfrage die ermittelt, ob beim Klick auf den Button gerade eine Animation läuft, oder nicht. Ob, oder ob nicht entscheidet der aktuelle Wert von `runningAnimation`. Ist er nicht `null` (die ID von `setInterval` ist übrigens eine Zahl) läuft die Animation und wir stoppen sie mit `clearInterval` und setzen danach `runningAnimation` auf `null`, ist er `null` läuft keine Animation und wir starten die Animation neu.
 
 
-    ```
+    ```javascript
     if (runningAnimation) {
         window.clearInterval(runningAnimation);
         runningAnimation = null;
@@ -395,19 +395,19 @@ Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterha
 
     * vor der `if (runningAnimation) {...}` Abfrage setzen wir per default ein Pause-Zeichen
         
-        ```
+        ```javascript
         playButton.value = "⏸";
         ```
 
     * innerhalb von `if (runningAnimation) {...}` beim Stoppen setzen wir wieder ein Play-Zeichen
 
-        ```
+        ```javascript
         playButton.value = "▶";
         ```
     
     * innerhalb von `if (value > slider.max) {...}` beim automatischen Beenden setzen wir wieder ein Play-Zeichen
 
-        ```
+        ```javascript
         playButton.value = "▶";
         ```
 
