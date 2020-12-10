@@ -8,7 +8,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
 1. das Stylesheet [main.css](main.css) fügen wir im `head`-Element gleich unter dem Seitentitel hinzu
 
-    ```
+    ```html
     <link rel="stylesheet" href="main.css">
     ```
 
@@ -17,7 +17,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
 2. das `body`-Element formatieren
 
-    ```
+    ```css
     body {
         max-width: 1280px;
         margin: auto;
@@ -31,7 +31,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * Den gesamten Inhalt des Header-Bereichs über [text-align](https://developer.mozilla.org/de/docs/Web/CSS/text-align) zentrieren
 
-        ```
+        ```css
         header {
             text-align: center;
         }
@@ -39,7 +39,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Quelle für den Bildautor formatieren und rechts unten beim Banner positionieren
 
-        ```
+        ```css
         header p {
             font-size: 0.8em;
             font-weight: bold;
@@ -60,12 +60,13 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
         * in *index.html*
 
-            ```
+            ```html
             <p class="white">
             ```
 
         * in *main.css*
-            ```
+
+            ```css
             .white,
             .white a:link,
             .white a:visited  {
@@ -80,7 +81,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * das quadratische Userbild mit [border-radius](https://developer.mozilla.org/de/docs/Web/CSS/border-radius) abrunden
 
-        ```
+        ```css
         header nav img {
             border-radius: 50%;
         }
@@ -89,7 +90,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Links in der Farbe Schwarz anzeigen
 
-        ```
+        ```css
         a:link,
         a:visited {
             color: black;
@@ -98,7 +99,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Adresse kleiner und mit [font-style](https://developer.mozilla.org/de/docs/Web/CSS/font-style) kursiv machen
 
-        ```
+        ```css
         header nav address {
             font-size: 0.9em;
             font-style: italic;
@@ -109,7 +110,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Breite des `main`-Elements verringern und zentrieren
 
-        ```
+        ```css
         main {
             max-width: 70%;
             margin: auto;
@@ -118,7 +119,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Absätze im Hauptbereich im Blocksatz formatieren
 
-        ```
+        ```css
         main p {
             text-align: justify;
         } 
@@ -126,7 +127,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * das Bild der Attraktion mit Bildunterschrift formatieren
 
-        ```
+        ```css
         main figure {
             margin-left: 0;
             width: 100%;
@@ -136,7 +137,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
         `figure`-Elemente werden immer eingerückt dargestellt. Mit `margin-left: 0` überschreiben wir dieses Verhalten.
 
 
-        ```
+        ```css
         main figure img {
             width: 100%;
             border: 1px solid black;
@@ -150,13 +151,13 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
         * in *index.html* vergeben wir beim div-Element für die Karte ein [id](https://developer.mozilla.org/de/docs/Web/CSS/ID-Selektoren) Attribut mit dem Wert `map`
 
-            ```
+            ```html
             <div id="map"></div>
             ```
 
         * in *main.css* können wir dieses Element über `#map` dann direkt ansprechen und seine Größe setzen. Der schwarze Rahmen zeigt uns den reservierten Platz an
 
-            ```
+            ```css
             #map {
                 width: 100%;
                 height: 360px;
@@ -166,7 +167,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * die Linkliste formatieren
 
-        ```
+        ```css
         main ul {
             list-style-type: circle;
         }
@@ -179,7 +180,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * Breite und Abstände setzen
 
-        ```
+        ```css
         footer {
             width: 100%;
             padding: 1em 0 3em 0;
@@ -191,21 +192,23 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
     * die Links der Etappennavigation nach rechts (vor) und links (zurück) verteilen
 
         * in *index.html* fügen wir bei den Links zwei neue Klassen-Attribute `back` und `next` ein
-            ```
+
+            ```html
             <a class="back">...</a>
             <a class="next">...</a>
             ```
 
         * in *main.css* verteilen wir die beiden Links mit [float](https://developer.mozilla.org/de/docs/Web/CSS/float) nach Rechts und Links
-        ```
-        footer .back {
-            float: left;
-        }
 
-        footer .next {
-            float: right;
-        }
-        ```
+            ```css
+            footer .back {
+                float: left;
+            }
+
+            footer .next {
+                float: right;
+            }
+            ```
 
         Die Doppelpfeile und das Trennzeichen der beiden Links hängen jetzt "in der Luft" - darum kümmern wir uns später
 
@@ -218,7 +221,7 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     Über [cdnjs.com](https://cdnjs.com/libraries/font-awesome) finden wir den Link zur Bibliothek und kopieren dort über *Copy* den Eintrag *Copy Script Tag without SRI*. *SRI* steht für *Subresource Integrity* und wer es genau wissen will, der kann unter [MDN Subresource Integrity - web security](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) zu diesem komplexen Thema nachlesen. Für uns reicht der "einfach Link" des `all.min.js` Skripts
     
-    ```
+    ```html
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
     ```
 
@@ -228,20 +231,20 @@ Dieses Template enthält das HTML-Grundgerüst der Musterseite ohne Formatierung
 
     * bei den Autorenlinks im Header-Bereich vor dem `mailto`-Link und Github-Link
 
-        ```
+        ```html
         <i class="fas fa-envelope-square"></i>
         <i class="fab fa-github"></i>
         ```
 
     * bei der Bildunterschrift der Attraktion in `figcaption`
 
-        ```
+        ```html
         <i class="fas fa-camera-retro"></i>
         ```
 
     * bei der Etappennavigation innerhalb des jeweiligen Linktextes
 
-        ```
+        ```html
         <i class="fas fa-arrow-left"></i>
         <i class="fas fa-arrow-right"></i>
         ```
@@ -263,12 +266,12 @@ Google Fonts ist eine freie Fontsammlung mit knapp 1000 Webfonts die wir so verw
 
     * im `head`-Element von *index.html* kopieren wir das `link`-Element
 
-        ```
+        ```html
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
         ```
     * beim `body`-Selektor von *main.css* setzen wir die `font-family`
 
-        ```
+        ```css
         body {
             font-family: 'Open Sans', sans-serif;
         }
@@ -278,12 +281,12 @@ Für die Absätze im `main`-Element suchen wir uns einen zweiten Font. Wir gehen
 
 * wir ersetzen im `head`-Element von *index.html*
 
-    ```
+    ```html
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&family=Roboto+Condensed:ital@0;1&display=swap" rel="stylesheet">
     ```
 * wir ergänzen beim `main p`-Selektor
 
-    ```
+    ```css
     main p {
         font-family: 'Roboto Condensed', sans-serif;
     }
@@ -293,7 +296,7 @@ Für die Absätze im `main`-Element suchen wir uns einen zweiten Font. Wir gehen
 
 In Abhängigkeit des beim Betrachten der Seite verwendeten Devices kann man über [@media-Regeln](https://developer.mozilla.org/de/docs/Web/CSS/@media) noch Anpassungen im CSS-Stylesheet vornehmen. Die Möglichkeiten dabei sind vielfältig, wir begnügen uns jetzt damit, bei Browsern mit einer Bildschirmbreite unter 900 Pixeln, den `main`-Bereich von 70% auf 90% zu vergrößern.
 
-```
+```css
 @media screen and (max-width: 900px) {
     main {
         max-width: 90%;
@@ -304,7 +307,7 @@ In Abhängigkeit des beim Betrachten der Seite verwendeten Devices kann man übe
 
 Mit einer zweiten `@media`-Regel stellen wir sicher, dass unser Bannerbild bei Browsern unter 1280px Breite (so groß ist das Banner im Original) automatisch auf die verfügbare Breite verkleinert wird.
 
-```
+```css
 @media screen and (max-width: 1280px) {
     header img {
         width: 100vw;
@@ -316,13 +319,13 @@ Leider wird dadurch auch unser Userbild auf 100% der verfügbaren Breite aufgebl
 
 * in *index.html* beim Bannerbild
 
-    ```
+    ```html
     <img class="banner" ...>
     ```
 
 * in *main.css*
 
-    ```
+    ```css
     @media screen and (max-width: 1280px) {
         header img.banner {
             width: 100vw;
@@ -338,7 +341,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
 
     Die [Download Leaflet](https://leafletjs.com/download.html) Seite zeigt uns unter *Using a Hosted Version of Leaflet* die Syntax zum Einbau des Leaflet Stylesheets und Skripts
 
-    ```
+    ```html
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     ```
@@ -348,7 +351,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
     * das ID-Attribut mit dem Wert `map` wird uns Zugriff auf das `div`-Element ermöglichen in das wir die Karte zeichnen
     * die geographische Länge, Breite und den Titel der Attraktion speichern wir in zwei HTML [data-Attributen](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) die wir beim Setzen des Ausschnitts sowie Erzeugen des Markers und Popups dann von dort auslesen werden
 
-    ```
+    ```html
     <div id="map" data-lat="-39.134038" data-lng="175.654811" data-title="Emerald Seen"></div>
     ```
 
@@ -356,7 +359,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
 
     * wir fügen dieses `script`-Element am Ende des `head`-Elements ein und stellen über das `defer`-Attribut sicher, dass es erst ausgeführt wird, wenn die ganze Seite geladen ist.
 
-        ```
+        ```html
         <script defer src="main.js"></script>
         ```
 
@@ -367,13 +370,13 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
     
     * wir erzeugen als Erstes mit [document.querySelector](https://developer.mozilla.org/de/docs/Web/API/Document/querySelector) eine Referenz auf unseren Karten-DIV.
 
-        ```
+        ```javascript
         let mapdiv = document.querySelector("#map");
         ```
 
     * Als nächstes initialisieren wir die Karte über [L.map](https://leafletjs.com/reference.html#map-l-map) und übergeben als ersten Parameter beim Aufruf die ID des Karten-DIVs. Damit wird festgelegt, wo die Karte gezeichnet werden soll. Im zweiten Parameter, dem *Options-Objekt*, setzen wir noch den Kartenmittelpunkt ([center](https://leafletjs.com/reference.html#map-center)) auf die `data-lat` und `data-lng` Werte im Karten DIV und den Zoomlevel ([zoom](https://leafletjs.com/reference.html#map-zoom)).
 
-        ```
+        ```javascript
         let map = L.map("map", {
             center: [
                 mapdiv.dataset.lat,
@@ -389,7 +392,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
 
     Unsere Karte ist damit schon auf die Koordinate zentriert, allerdings benötigen wir noch einen Hintergrundlayer um zu sehen, wo wir uns befinden. Das [OpenstreetMap](OpenstreetMap)-Projekt stellt uns diesen als [WMTS-Service](https://de.wikipedia.org/wiki/Web_Map_Tile_Service) zur Verfügung. Über [L.tileLayer](https://leafletjs.com/reference.html#tilelayer) können wir ihn direkt in `L.map` definieren. Ohne auf die Details der einzelnen Attribute und Werte bei der Layerdefinition einzugehen, sieht der endgültige Code zum Positionieren des Ausschnitts auf der weltweit verfügbaren OpenTopoMap so aus:
 
-    ```
+    ```javascript
     let map = L.map("map", {
         center: [
             mapdiv.dataset.lat,
@@ -409,7 +412,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
 
     Über [L.marker](https://leafletjs.com/reference.html#marker) können wir die Position der Attraktion anzeigen. `L.marker` benötigt dabei als ersten Parameter ein [LatLng](https://leafletjs.com/reference.html#latlng)-Objekt, das wir auf verschiedenste Weisen angeben können. Wir entscheiden uns für die einfachste Variante und verwenden einen Array mit den beiden Werten. Über [addTo](https://leafletjs.com/reference.html#marker-addto) hängen wir den Marker an unsere Karte und machen ihn dadurch sichtbar.
 
-    ```
+    ```javascript
     let mrk = L.marker([
         mapdiv.dataset.lat,
         mapdiv.dataset.lng
@@ -420,7 +423,7 @@ Diese erste, einfache Übersichtskarte für unsere Etappenattraktion werden wir,
 
     Über [bindPopup](https://leafletjs.com/reference.html#marker-bindpopup) hängen wir dann den Titel der Attraktion als Popup an den Marker und öffnen es automatisch mit [openPopup](https://leafletjs.com/reference.html#marker-openpopup)
 
-    ```
+    ```javascript
     mrk.bindPopup(mapdiv.dataset.title).openPopup(); 
     ```
 
@@ -431,13 +434,13 @@ Die Syntax für den Einbau des Hintergrundlayers mit `L.tileLayer` ist sehr aufw
 
 Zuerst binden wir das Plugin Skript über [cdnjs.com](https://cdnjs.com/libraries/leaflet-providers) in *index.html* ein
 
-```
+```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.9.1/leaflet-providers.js"></script>
 ```
 
 Dann ersetzen wir den komplizierten `L.tileLayer` Code in *main.js* mit einem Aufruf von `L.tileLayer.provider` dem wir das Keyword der gewünschten Karte, auf der Demoseite als *Provider name* ablesbar, übergeben.
 
-```
+```javascript
 layers: [
     L.tileLayer.provider("OpenTopoMap")
 ]
