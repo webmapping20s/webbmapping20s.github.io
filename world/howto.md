@@ -38,6 +38,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
         ```
 
     * und testen sie mit `console.log` in `main.js`
+
         ```javascript
         console.log(CONFIRMED);
         console.log(DEATHS);
@@ -281,19 +282,19 @@ Wir sehen zwar schon Kreise, wissen aber nicht, welchen Datenwert sie repräsent
 
 Unterschiedliche Farben bei den Kreisen nach Thema lassen sich in der `if`-Abfrage bei `L.circleMarker` definieren. Wir verwenden dabei Farben von [https://clrs.cc/](https://clrs.cc/)
 
-    ```javascript
-    let color;
-    if (value === "confirmed") {
-        data = CONFIRMED;
-        color = "#0074D9"; // Blue
-    } else if (value === "deaths") {
-        data = DEATHS;
-        color = "#B10DC9"; // PURPLE
-    } else {
-        data = RECOVERED;
-        color = "#2ECC40"; // GREEN
-    }
-    ```
+```javascript
+let color;
+if (value === "confirmed") {
+    data = CONFIRMED;
+    color = "#0074D9"; // Blue
+} else if (value === "deaths") {
+    data = DEATHS;
+    color = "#B10DC9"; // PURPLE
+} else {
+    data = RECOVERED;
+    color = "#2ECC40"; // GREEN
+}
+```
 
 Bei `L.circleMarker` müssen wir dann noch die Farbe mit `color : color` unterhalb von `radius : r` setzen
 
