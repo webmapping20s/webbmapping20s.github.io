@@ -8,13 +8,13 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * vor `L.control.layers`
 
-        ```
+        ```javascript
         let awsLayer = L.featureGroup().addTo(map);
         ```
 
     * in `L.control.layers`
 
-        ```
+        ```javascript
         L.control.layers({
             // baselayers
         }, {
@@ -32,7 +32,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 3. die Stationen als Marker mit [leaflet-ajax](https://github.com/calvinmetcalf/leaflet-ajax) und der GeoJSON-URL visualisieren
 
-    ```
+    ```javascript
     let awsUrl = "https://lawine.tirol.gv.at/data/produkte/ogd.geojson"
     let aws = L.geoJson.ajax(awsUrl, {
         pointToLayer: function(point, latlng) {
@@ -58,7 +58,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * in der [pointToLayer](https://leafletjs.com/reference.html#geojson-pointtolayer) Funktion des `aws` GeoJSON-Objekts können wir die Werte der `.properties` als Popup anzeigen
 
-        ```
+        ```javascript
         pointToLayer: function(point, latlng) {
             let marker = L.marker(latlng).bindPopup(`
                 <h3>${point.properties.name}</h3>
@@ -75,7 +75,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
     
     * zeigen wir zum Testen nur Stationen an, deren Temperatur über 5°C liegt
 
-        ```
+        ```javascript
         filter: function(feature) {
             return feature.properties.LT >= 5;
         },
@@ -85,7 +85,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * wir können auch Stationen über 3000 Meter Seehöhe filtern und müssen dazu nur wissen, wo wir die Höhe der Station finden - sie steht nicht in den `feature.properties` sondern in der Geometrie als dritte Komponente nach lat, lng des `feature.geometry.coordinates` Arrays
 
-        ```
+        ```javascript
         filter: function(feature) {
             return feature.geometry.coordinates[2] > 3000;
         }
@@ -93,7 +93,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * letztendlich entscheiden wir uns dazu, dass wir nur Stationen mit Temperaturwerten anzeigen
 
-        ```
+        ```javascript
         filter: function(feature) {
             return feature.properties.LT;
         }
@@ -105,7 +105,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * statt `awsLayer` verwenden wir ab jetzt ein neues *overlay-Objekt*
 
-    ```
+    ```javascript
     let overlay = {
         stations: L.featureGroup()
     };
@@ -116,7 +116,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 2. wir fügen ein Callback `data:loaded` des `aws`-Objekts hinzu und holen uns dort die Original GeoJSON Daten über [toGeoJSON](https://leafletjs.com/reference.html#geojson-togeojson) noch einmal, denn wir wollen nicht nur Stationsmarker setzen, sondern auch thematische Layer hinzufügen. Die Daten sind schon vorhanden, wir müssen also keine neuen Ajax requests machen. Den Ausschnitt auf die Stationen setzen wir auch gleich mit und die automatische Anzeige der Marker wird auch gefixt.
 
-    ```
+    ```javascript
     aws.on("data:loaded", function() {
         console.log(aws.toGeoJSON());
 
@@ -131,7 +131,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 3. das Zeichnen der Temperaturdaten erledigen wir in einer eigenen Funktion `drawTemperature`, die wir aus `data:loaded` aufrufen und ihr beim Aufruf die GeoJSON Daten gleich mit übergeben
 
-    ```
+    ```javascript
     let drawTemperature = function(jsonData) {
         L.geoJson(jsonData).addTo(map);
     };
@@ -144,31 +144,31 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * bei `let overlay`
 
-        ```
+        ```javascript
         temperature: L.featureGroup()
         ```
 
     * bei den Overlays von `L.control.layers`
 
-        ```
+        ```javascript
         "Temperatur (°C)": overlay.temperature
         ```
 
     * in `let drawTemperature`
 
-        ```
+        ```javascript
         L.geoJson(jsonData).addTo(overlay.temperature);
         ```
 
     * in data:loaded
 
-        ```
+        ```javascript
         overlay.temperature.addTo(map);
         ```
 
 5. über `pointToLayer` definieren wir explizit einen Marker mit dem Stationsnamen als Tooltipp. Der Tooltipp wird über das [title](https://leafletjs.com/reference.html#marker-title)-Attribut von `L.marker` definiert
 
-    ```
+    ```javascript
     L.geoJson(jsonData, {
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
@@ -180,7 +180,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 6. statt als Marker zeigen wir den Temperaturwert mit einer Kommastelle direkt als [L.divIcon](https://leafletjs.com/reference.html#divicon) und damit als Text in der Karte an. Der angezeigte Text wird über das [html](https://leafletjs.com/reference.html#divicon-html)-Attribut von `L.divIcon` definiert
 
-    ```
+    ```javascript
     title: `...`,
     icon: L.divIcon({
         html: `<div>${feature.properties.LT.toFixed(1)}</div>`
@@ -191,13 +191,14 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     * bei `L.divIcon`
 
-        ```
+        ```javascript
         html: `<div class="label-temperature">${feature.properties.LT.toFixed(1)}</div>`,
         className: "ignore-me" // dirty hack
         ```
 
     * in [main.css](main.css):
-        ```
+
+        ```css
         .label-temperature {
             display: inline;
             font-size: 1.25em;
@@ -215,7 +216,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
 7. schließlich stellen wir sicher, dass nur dann Icons gezeichnet werden, wenn auch Temperaturdaten vorhanden sind
 
-    ```
+    ```javascript
     filter: function(feature) {
         return feature.properties.LT;
     },
@@ -223,7 +224,7 @@ Als Vorlage für das HTML Grundgerüst verwenden wir [template.zip](template.zip
 
     **Hmmm**: dieser Filter ist wohl nicht ganz korrekt, denn was passiert bei einer Temperatur von `0` °C? Besser wäre wohl eine Abfrage auf den möglichen Wertebereich wie z.B.:
 
-    ```
+    ```javascript
     return feature.properties.LT >= 0 || feature.properties.LT < 0
     ```
 
@@ -235,7 +236,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 2. die Funktion `drawWind` als 1:1 Kopie von `drawTemperature` definieren und danach anpassen - statt der Temperatur zeigen wir die Windgeschwindigkeit in km/h an
 
-    ```
+    ```javascript
     let kmh = Math.round(feature.properties.WG / 1000 * 3600);
     ```
 
@@ -255,7 +256,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 - *beautify* mit der HTML-option zeigt die Einträge  der SVG *rect-Elemente* besser
 - bereinigen und ein Farbobjekt nach diesem Muster anlegen
 
-    ```
+    ```javascript
     const COLORS = {
         temperature : [
             [9999, "rgb(250,55,150)"], // lila, Werte >= 30
@@ -278,7 +279,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 1. dazu erstellen wir eine Funktion `getColor` der wir den Wert und die jeweilige Palette mit Schwellen und Farben übergeben. Sie wird uns dann die passende Farbe zurückgeben.
 
-    ```
+    ```javascript
     let getColor = function(val, ramp) {
         let col = "red";
 
@@ -291,7 +292,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
     * ist der Wert kleiner als die Schwelle merken wir uns die Farbe zu dieser Schwelle und gehen zur nächsten Schwelle weiter
     * ist der Wert größer oder gleich der Schwelle brechen wir ab, denn wir haben in der letzten Farbe schon die richtige Farbe ermittelt
 
-    ```
+    ```javascript
     for (let i=0; i < ramp.length; i++) {
         if (val >= ramp[i][0]) {
             console.log(
@@ -311,13 +312,13 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 3. zum Schluss geben wir die ermittelte Farbe zurück
 
-    ```
+    ```javascript
     return col;
     ```
 
 4. diese Funktion verwenden wir jetzt in `pointToLayer` und setzen die Hintergrundfarbe des Temperaturlabels über ein CSS *style-Attribut*
 
-    ```
+    ```javascript
     let col = getColor(feature.properties.LT, COLORS.temperature);
     // und dann
     html: `<div class="label-temp" style="background-color:${col}">...</div>`
@@ -330,20 +331,20 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 1. wir zeigen zuerst Stationsname und Windgeschwindigkeit in km/h als Tooltipp an
 
-    ```
+    ```javascript
     title: `${feature.properties.name}: ${kmh} km/h`
     
     ```
 
 2. dann ersetzen wir den Wert für die Windgeschwindigkeit beim `L.divIcon` durch einen nach oben gerichteten Pfeil in der ermittelten Farbe und nehmen die Farbe vom DIV-Element weg
 
-    ```
+    ```html
     <div class="label-wind"><i style="color:${col}" class="fa fa-arrow-circle-up"></i></div>
     ```
 
 2. schließlich rotieren wir den Pfeil über das CSS-Attribut `transform` nach der Gradangabe in der Windrichtung
 
-    ```
+    ```javascript
     let rot = feature.properties.WR;
 
     <i style="color:${col};transform: rotate(${rot}deg)" class="fa fa-arrow-circle-up"></i>
@@ -351,7 +352,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 3. damit der Label besser lesbar ist setzen wir einen passenden Stil in `main.css` - die Freistellung des Pfeils ist jetzt invers
 
-    ```
+    ```css
     .label-wind {
         display: inline;
         font-size: 2.5em;
@@ -365,7 +366,7 @@ Nach dem gleichen Muster wie beim Temperatur-Layer können wir die Windgeschwind
 
 4. die Höhe der Station können wir noch bei den Tooltips dazuschreiben
 
-    ```
+    ```javascript
     title: `${feature.properties.name} (${feature.geometry.coordinates[2]}m) - ${kmh} km/h`
     ```
 
@@ -385,13 +386,13 @@ die Farben bekommen wir wieder aus den Legenden von [https://lawinen.report/](ht
 
 4. in `index.html` .css und .js einbinden
 
-    ```
+    ```html
     <link rel="stylesheet" href="leaflet-rainviewer/leaflet.rainviewer.css">
     <script src="leaflet-rainviewer/leaflet.rainviewer.js"></script>
     ```
 
 - in `main.js` unter `data:loaded` das Plugin initialisieren
 
-    ```
+    ```javascript
     L.control.rainviewer().addTo(map);
     ```
